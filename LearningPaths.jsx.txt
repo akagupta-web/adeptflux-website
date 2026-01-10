@@ -1,0 +1,226 @@
+import { Clock, TrendingUp, Lock } from 'lucide-react';
+import { Card, CardContent } from '../components/ui/card';
+import { Button } from '../components/ui/button';
+import { Badge } from '../components/ui/badge';
+import { Link } from 'react-router-dom';
+import { learningPaths } from '../data/mock';
+
+export const LearningPaths = () => {
+  const engineeringPaths = learningPaths.filter(p => p.track === 'engineering');
+  const aiPaths = learningPaths.filter(p => p.track === 'ai');
+
+  return (
+    <div className=\"min-h-screen bg-slate-950 pt-24\">
+      {/* Hero */}
+      <section className=\"py-20 px-4 sm:px-6 lg:px-8\">
+        <div className=\"max-w-5xl mx-auto text-center\">
+          <h1 className=\"text-5xl md:text-6xl font-bold text-white mb-6\">
+            Learning <span className=\"text-emerald-400\">Paths</span>
+          </h1>
+          <p className=\"text-xl text-slate-300 leading-relaxed\">
+            Structured programs designed to take you from where you are to where you want to be. 
+            Join the waitlist for early access.
+          </p>
+        </div>
+      </section>
+
+      {/* Engineering Paths */}
+      <section className=\"py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50\">
+        <div className=\"max-w-7xl mx-auto\">
+          <div className=\"mb-12\">
+            <h2 className=\"text-4xl font-bold text-white mb-4\">Engineering & Analog Track</h2>
+            <p className=\"text-xl text-slate-400\">Build deep circuit design intuition and interview confidence</p>
+          </div>
+
+          <div className=\"grid md:grid-cols-2 gap-8\">
+            {engineeringPaths.map((path) => (
+              <Card key={path.id} className=\"bg-slate-900 border-slate-800 hover:border-emerald-500/50 transition-all duration-300 overflow-hidden\">
+                <div className=\"relative h-48\">
+                  <img
+                    src={path.image}
+                    alt={path.title}
+                    className=\"w-full h-full object-cover\"
+                  />
+                  <div className=\"absolute top-4 right-4\">
+                    <Badge className=\"bg-amber-500/20 text-amber-400 border-amber-500/30\">
+                      Coming Soon
+                    </Badge>
+                  </div>
+                </div>
+                <CardContent className=\"p-8\">
+                  <h3 className=\"text-2xl font-bold text-white mb-3\">{path.title}</h3>
+                  <p className=\"text-slate-300 mb-4 leading-relaxed\">{path.description}</p>
+                  
+                  <div className=\"flex items-center gap-4 mb-6 text-sm\">
+                    <div className=\"flex items-center gap-2 text-slate-400\">
+                      <Clock className=\"w-4 h-4\" />
+                      <span>{path.duration}</span>
+                    </div>
+                    <div className=\"flex items-center gap-2 text-slate-400\">
+                      <TrendingUp className=\"w-4 h-4\" />
+                      <span>{path.level}</span>
+                    </div>
+                  </div>
+
+                  <div className=\"mb-6\">
+                    <h4 className=\"text-white font-semibold mb-3\">What You'll Learn:</h4>
+                    <ul className=\"space-y-2\">
+                      {path.features.map((feature, idx) => (
+                        <li key={idx} className=\"flex items-start gap-2\">
+                          <div className=\"w-1.5 h-1.5 bg-emerald-400 rounded-full mt-2 flex-shrink-0\"></div>
+                          <span className=\"text-sm text-slate-400\">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <Link to=\"/apply\">
+                    <Button className=\"w-full bg-emerald-500 hover:bg-emerald-600 text-slate-900 font-semibold\">
+                      Join Waitlist
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* AI & Digital Paths */}
+      <section className=\"py-20 px-4 sm:px-6 lg:px-8\">
+        <div className=\"max-w-7xl mx-auto\">
+          <div className=\"mb-12\">
+            <h2 className=\"text-4xl font-bold text-white mb-4\">AI & Digital Skills Track</h2>
+            <p className=\"text-xl text-slate-400\">Leverage modern tools to create income and amplify your impact</p>
+          </div>
+
+          <div className=\"grid md:grid-cols-2 gap-8\">
+            {aiPaths.map((path) => (
+              <Card key={path.id} className=\"bg-slate-900 border-slate-800 hover:border-emerald-500/50 transition-all duration-300 overflow-hidden\">
+                <div className=\"relative h-48\">
+                  <img
+                    src={path.image}
+                    alt={path.title}
+                    className=\"w-full h-full object-cover\"
+                  />
+                  <div className=\"absolute top-4 right-4\">
+                    <Badge className=\"bg-amber-500/20 text-amber-400 border-amber-500/30\">
+                      Coming Soon
+                    </Badge>
+                  </div>
+                </div>
+                <CardContent className=\"p-8\">
+                  <h3 className=\"text-2xl font-bold text-white mb-3\">{path.title}</h3>
+                  <p className=\"text-slate-300 mb-4 leading-relaxed\">{path.description}</p>
+                  
+                  <div className=\"flex items-center gap-4 mb-6 text-sm\">
+                    <div className=\"flex items-center gap-2 text-slate-400\">
+                      <Clock className=\"w-4 h-4\" />
+                      <span>{path.duration}</span>
+                    </div>
+                    <div className=\"flex items-center gap-2 text-slate-400\">
+                      <TrendingUp className=\"w-4 h-4\" />
+                      <span>{path.level}</span>
+                    </div>
+                  </div>
+
+                  <div className=\"mb-6\">
+                    <h4 className=\"text-white font-semibold mb-3\">What You'll Learn:</h4>
+                    <ul className=\"space-y-2\">
+                      {path.features.map((feature, idx) => (
+                        <li key={idx} className=\"flex items-start gap-2\">
+                          <div className=\"w-1.5 h-1.5 bg-emerald-400 rounded-full mt-2 flex-shrink-0\"></div>
+                          <span className=\"text-sm text-slate-400\">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <Link to=\"/apply\">
+                    <Button className=\"w-full bg-emerald-500 hover:bg-emerald-600 text-slate-900 font-semibold\">
+                      Join Waitlist
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className=\"py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50\">
+        <div className=\"max-w-7xl mx-auto\">
+          <div className=\"text-center mb-16\">
+            <h2 className=\"text-4xl font-bold text-white mb-4\">Why Join AdeptFlux Programs?</h2>
+            <p className=\"text-xl text-slate-400\">More than just courses — a complete learning ecosystem</p>
+          </div>
+
+          <div className=\"grid md:grid-cols-3 gap-8\">
+            {[
+              {
+                title: \"Personalized Mentorship\",
+                description: \"1-on-1 guidance tailored to your specific gaps, goals, and learning style.\",
+                emoji: \"🎯\"
+              },
+              {
+                title: \"Real-World Practice\",
+                description: \"Mock interviews, live problem-solving sessions, and hands-on application.\",
+                emoji: \"💪\"
+              },
+              {
+                title: \"Lifetime Access\",
+                description: \"Once enrolled, access materials, updates, and community support forever.\",
+                emoji: \"♾️\"
+              },
+              {
+                title: \"Structured Frameworks\",
+                description: \"Learn thinking patterns and mental models that work across problems.\",
+                emoji: \"🧠\"
+              },
+              {
+                title: \"Community Support\",
+                description: \"Connect with fellow learners, share insights, and grow together.\",
+                emoji: \"🤝\"
+              },
+              {
+                title: \"Career Guidance\",
+                description: \"Get advice on interviews, career transitions, and income strategies.\",
+                emoji: \"🚀\"
+              }
+            ].map((benefit, idx) => (
+              <Card key={idx} className=\"bg-slate-900 border-slate-800\">
+                <CardContent className=\"p-6 text-center\">
+                  <div className=\"text-4xl mb-4\">{benefit.emoji}</div>
+                  <h3 className=\"text-xl font-bold text-white mb-3\">{benefit.title}</h3>
+                  <p className=\"text-slate-400 leading-relaxed\">{benefit.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className=\"py-20 px-4 sm:px-6 lg:px-8\">
+        <div className=\"max-w-4xl mx-auto text-center\">
+          <div className=\"bg-gradient-to-br from-emerald-500/10 to-transparent border border-emerald-500/20 rounded-2xl p-12\">
+            <Lock className=\"w-12 h-12 text-emerald-400 mx-auto mb-6\" />
+            <h2 className=\"text-4xl font-bold text-white mb-4\">
+              Be the First to Know
+            </h2>
+            <p className=\"text-xl text-slate-300 mb-8 leading-relaxed\">
+              Programs are launching soon. Join the waitlist to get early access, special pricing, 
+              and a free clarity call to map your learning journey.
+            </p>
+            <Link to=\"/apply\">
+              <Button size=\"lg\" className=\"bg-emerald-500 hover:bg-emerald-600 text-slate-900 font-semibold text-lg px-8\">
+                Join Waitlist Now
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};

@@ -1,0 +1,180 @@
+import { Star, Quote } from 'lucide-react';
+import { Card, CardContent } from '../components/ui/card';
+import { testimonials } from '../data/mock';
+
+export const Testimonials = () => {
+  return (
+    <div className=\"min-h-screen bg-slate-950 pt-24\">
+      {/* Hero */}
+      <section className=\"py-20 px-4 sm:px-6 lg:px-8\">
+        <div className=\"max-w-5xl mx-auto text-center\">
+          <h1 className=\"text-5xl md:text-6xl font-bold text-white mb-6\">
+            Success <span className=\"text-emerald-400\">Stories</span>
+          </h1>
+          <p className=\"text-xl text-slate-300 leading-relaxed\">
+            Real results from engineers and students who transformed their approach with AdeptFlux mentorship.
+          </p>
+        </div>
+      </section>
+
+      {/* Trust Image */}
+      <section className=\"py-12 px-4 sm:px-6 lg:px-8\">
+        <div className=\"max-w-5xl mx-auto\">
+          <div className=\"rounded-2xl overflow-hidden border border-slate-800\">
+            <img
+              src=\"https://images.pexels.com/photos/7490819/pexels-photo-7490819.jpeg\"
+              alt=\"Professional mentoring\"
+              className=\"w-full h-[400px] object-cover\"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Grid */}
+      <section className=\"py-20 px-4 sm:px-6 lg:px-8\">
+        <div className=\"max-w-7xl mx-auto\">
+          <div className=\"grid md:grid-cols-2 gap-8\">
+            {testimonials.map((testimonial) => (
+              <Card key={testimonial.id} className=\"bg-slate-900 border-slate-800 hover:border-emerald-500/50 transition-all duration-300\">
+                <CardContent className=\"p-8\">
+                  <div className=\"flex justify-between items-start mb-6\">
+                    <Quote className=\"w-10 h-10 text-emerald-500/20\" />
+                    <div className=\"flex gap-1\">
+                      {[...Array(testimonial.rating)].map((_, idx) => (
+                        <Star key={idx} className=\"w-4 h-4 fill-emerald-400 text-emerald-400\" />
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <p className=\"text-slate-300 leading-relaxed mb-6 italic\">
+                    \"{testimonial.content}\"
+                  </p>
+
+                  <div className=\"flex items-center gap-4 pt-6 border-t border-slate-800\">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className=\"w-14 h-14 rounded-full object-cover border-2 border-slate-700\"
+                    />
+                    <div>
+                      <h4 className=\"text-white font-semibold text-lg\">{testimonial.name}</h4>
+                      <p className=\"text-sm text-slate-400\">{testimonial.role}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className=\"py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50\">
+        <div className=\"max-w-7xl mx-auto\">
+          <div className=\"text-center mb-16\">
+            <h2 className=\"text-4xl font-bold text-white mb-4\">Impact in Numbers</h2>
+            <p className=\"text-xl text-slate-400\">Results that speak for themselves</p>
+          </div>
+
+          <div className=\"grid md:grid-cols-4 gap-8\">
+            {[
+              { value: \"500+\", label: \"Engineers Mentored\", sublabel: \"Across 50+ companies\" },
+              { value: \"1000+\", label: \"Mock Sessions\", sublabel: \"Real-time problem solving\" },
+              { value: \"95%\", label: \"Success Rate\", sublabel: \"Interview placement\" },
+              { value: \"4.9/5\", label: \"Average Rating\", sublabel: \"From learner feedback\" }
+            ].map((stat, idx) => (
+              <div key={idx} className=\"text-center\">
+                <div className=\"text-5xl font-bold text-emerald-400 mb-2\">{stat.value}</div>
+                <div className=\"text-white font-semibold mb-1\">{stat.label}</div>
+                <div className=\"text-sm text-slate-400\">{stat.sublabel}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Key Transformations */}
+      <section className=\"py-20 px-4 sm:px-6 lg:px-8\">
+        <div className=\"max-w-7xl mx-auto\">
+          <div className=\"text-center mb-16\">
+            <h2 className=\"text-4xl font-bold text-white mb-4\">Common Transformations</h2>
+            <p className=\"text-xl text-slate-400\">How AdeptFlux helps engineers level up</p>
+          </div>
+
+          <div className=\"grid md:grid-cols-3 gap-8\">
+            {[
+              {
+                before: \"Interview anxiety & blank mind\",
+                after: \"Confident problem-solving under pressure\",
+                icon: \"🎯\"
+              },
+              {
+                before: \"Theoretical knowledge only\",
+                after: \"Deep circuit design intuition\",
+                icon: \"💡\"
+              },
+              {
+                before: \"Overwhelmed by AI hype\",
+                after: \"Practical AI skills for income\",
+                icon: \"🚀\"
+              },
+              {
+                before: \"Random YouTube learning\",
+                after: \"Structured mentor-led growth\",
+                icon: \"📈\"
+              },
+              {
+                before: \"Struggling to explain concepts\",
+                after: \"Clear technical communication\",
+                icon: \"💬\"
+              },
+              {
+                before: \"Unsure about career path\",
+                after: \"Clear roadmap with actionable steps\",
+                icon: \"🗺️\"
+              }
+            ].map((transformation, idx) => (
+              <Card key={idx} className=\"bg-slate-900 border-slate-800\">
+                <CardContent className=\"p-6\">
+                  <div className=\"text-4xl mb-4 text-center\">{transformation.icon}</div>
+                  <div className=\"space-y-3\">
+                    <div>
+                      <div className=\"text-xs text-slate-500 uppercase tracking-wider mb-1\">Before</div>
+                      <p className=\"text-slate-400 text-sm\">{transformation.before}</p>
+                    </div>
+                    <div className=\"h-px bg-emerald-500/20\"></div>
+                    <div>
+                      <div className=\"text-xs text-emerald-400 uppercase tracking-wider mb-1\">After</div>
+                      <p className=\"text-white font-medium text-sm\">{transformation.after}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Video Testimonial Placeholder */}
+      <section className=\"py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50\">
+        <div className=\"max-w-5xl mx-auto\">
+          <div className=\"text-center mb-12\">
+            <h2 className=\"text-4xl font-bold text-white mb-4\">Video Testimonials</h2>
+            <p className=\"text-xl text-slate-400\">Hear directly from our learners (Coming Soon)</p>
+          </div>
+
+          <div className=\"aspect-video bg-slate-800 rounded-2xl border border-slate-700 flex items-center justify-center\">
+            <div className=\"text-center\">
+              <div className=\"w-20 h-20 bg-emerald-500/10 rounded-full flex items-center justify-center mx-auto mb-4\">
+                <svg className=\"w-10 h-10 text-emerald-400\" fill=\"currentColor\" viewBox=\"0 0 20 20\">
+                  <path d=\"M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z\" />
+                </svg>
+              </div>
+              <p className=\"text-slate-400\">Video testimonials coming soon</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
