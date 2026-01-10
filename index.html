@@ -1,0 +1,267 @@
+<!--
+ADEPTFLUX STATIC WEBSITE (EMANGA / EDUCATE.IO STYLE)
+--------------------------------------------------
+This is a FULLY INDEPENDENT static website.
+You can copy this into index.html and deploy via GitHub + Vercel.
+No Emergent. No subscriptions. No framework lock-in.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AdeptFlux — Engineering, AI & Skill Leverage</title>
+  <meta name="description" content="AdeptFlux is a mentor-led ecosystem helping engineers and learners move from theory to real-world thinking and AI-powered skills." />
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-main: #0b0d12;
+      --bg-card: #111522;
+      --text-main: #ffffff;
+      --text-muted: #9aa0aa;
+      --accent: #2ec4b6;
+      --border: #1f2433;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 120px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h1 {
+      font-size: 56px;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 40px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: var(--text-muted);
+      max-width: 820px;
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(17,21,34,0.8);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      padding: 12px 24px;
+      border-radius: 999px;
+      z-index: 50;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin: 28px 0 40px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #0b0d12;
+      padding: 14px 32px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.25s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); opacity: 0.95; }
+
+    /* GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 36px;
+      border-radius: 16px;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+    }
+
+    .cta p { margin: 24px auto 40px; }
+
+    footer {
+      padding: 64px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* SIMPLE SCROLL FADE */
+    .fade {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: all 0.8s ease;
+    }
+
+    .fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 40px; }
+      h2 { font-size: 30px; }
+      section { padding: 90px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav">AdeptFlux · Mentor‑Led Engineering & AI</div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container fade">
+      <h1>
+        A Learning Ecosystem for Engineers
+        Who Want Real‑World Thinking
+      </h1>
+      <p>
+        AdeptFlux helps students and engineers move from theoretical understanding
+        to practical reasoning, AI‑assisted workflows, and future‑ready skills —
+        guided through mentorship, not noise.
+      </p>
+      <a href="#ecosystem" class="btn">Explore the Ecosystem</a>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="container fade">
+      <h2>The Missing Layer in Technical Education</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Knowledge Without Clarity</h3>
+          <p>Understanding theory but struggling to explain or apply it.</p>
+        </div>
+        <div class="card">
+          <h3>Interviews Without Structure</h3>
+          <p>Freezing not due to lack of skill, but lack of thinking frameworks.</p>
+        </div>
+        <div class="card">
+          <h3>AI Without Direction</h3>
+          <p>Tools exist, but without fundamentals, leverage feels overwhelming.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section id="ecosystem">
+    <div class="container fade">
+      <h2>The AdeptFlux Approach</h2>
+      <p>
+        AdeptFlux is built on long‑term thinking — where mentorship, context, and
+        deliberate practice replace rushed consumption and surface‑level learning.
+      </p>
+      <div class="grid">
+        <div class="card">
+          <h3>Engineering Thinking</h3>
+          <p>Develop intuition, reasoning, and articulation like a senior engineer.</p>
+        </div>
+        <div class="card">
+          <h3>AI as Leverage</h3>
+          <p>Use AI as a thinking assistant — not a shortcut.</p>
+        </div>
+        <div class="card">
+          <h3>Skill to Opportunity</h3>
+          <p>Learn how capable engineers build sustainable income pathways.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container fade">
+      <h2>Built for the Long Term</h2>
+      <p>
+        AdeptFlux is designed to evolve — from foundational learning to advanced
+        programs and mentorship pathways.
+      </p>
+      <a href="#" class="btn">Join the Ecosystem</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 AdeptFlux · Independent · Mentor‑Led · Future‑Ready
+  </footer>
+
+  <script>
+    const fades = document.querySelectorAll('.fade');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.15 });
+
+    fades.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
