@@ -16,10 +16,10 @@ No Emergent. No subscriptions. No framework lock-in.
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- 1. CSS VARIABLES (THE DESIGN SYSTEM) --- */
+        /* --- 1. CSS VARIABLES --- */
         :root {
             /* Palette */
             --bg-slate: #0F172A;
@@ -30,35 +30,34 @@ No Emergent. No subscriptions. No framework lock-in.
             --accent-cyan: #06B6D4;  /* Digital/AI */
             --border-color: #334155;
             
-            /* Typography */
-            --font-head: 'Space Grotesk', sans-serif;
-            --font-body: 'Inter', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
+            /* Typography - Standard Clean Font */
+            --font-main: 'Inter', system-ui, -apple-system, sans-serif;
 
             /* Spacing */
-            --container-width: 1200px;
+            --container-width: 1100px;
             --section-padding: 80px 20px;
         }
 
-        /* --- 2. GLOBAL RESET & BASE STYLES --- */
+        /* --- 2. GLOBAL STYLES --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             background-color: var(--bg-slate);
             color: var(--text-main);
-            font-family: var(--font-body);
+            font-family: var(--font-main);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         ul { list-style: none; }
+        button { font-family: var(--font-main); }
 
         /* Typography Utilities */
-        h1, h2, h3 { font-family: var(--font-head); line-height: 1.1; }
-        .mono { font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent-cyan); }
+        h1, h2, h3 { line-height: 1.2; font-weight: 700; }
         .text-copper { color: var(--accent-copper); }
         .text-cyan { color: var(--accent-cyan); }
+        .text-highlight { color: #fff; font-weight: 600; }
 
         /* --- 3. ANIMATION UTILITIES --- */
         .fade-up {
@@ -75,8 +74,8 @@ No Emergent. No subscriptions. No framework lock-in.
         nav {
             position: fixed;
             top: 0; left: 0; width: 100%;
-            background: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
             border-bottom: 1px solid var(--border-color);
             z-index: 1000;
             padding: 15px 0;
@@ -89,24 +88,21 @@ No Emergent. No subscriptions. No framework lock-in.
             align-items: center;
             padding: 0 20px;
         }
-        .logo { font-family: var(--font-head); font-weight: 700; font-size: 1.5rem; letter-spacing: -1px; }
+        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px; }
         .logo span { color: var(--accent-cyan); }
         
-        .nav-links { display: flex; gap: 30px; display: none; /* Hidden on mobile by default */ }
-        
-        /* Desktop Nav */
-        @media (min-width: 768px) {
-            .nav-links { display: flex; align-items: center; }
-        }
+        .nav-links { display: none; gap: 30px; }
+        @media (min-width: 768px) { .nav-links { display: flex; align-items: center; } }
 
         .btn-nav {
             background: transparent;
             border: 1px solid var(--text-muted);
             padding: 8px 20px;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 0.9rem;
+            color: var(--text-main);
         }
-        .btn-nav:hover { border-color: var(--text-main); color: var(--accent-cyan); }
+        .btn-nav:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
 
         /* --- 5. HERO SECTION --- */
         .hero {
@@ -114,30 +110,32 @@ No Emergent. No subscriptions. No framework lock-in.
             max-width: var(--container-width);
             margin: 0 auto;
             text-align: center;
-            background-image: radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+            background-image: radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.08) 0%, transparent 60%);
         }
         
         .hero-badge {
             display: inline-block;
-            background: rgba(245, 158, 11, 0.1);
-            color: var(--accent-copper);
-            padding: 5px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            padding: 6px 16px;
             border-radius: 50px;
             font-size: 0.85rem;
-            margin-bottom: 20px;
-            border: 1px solid rgba(245, 158, 11, 0.2);
+            margin-bottom: 24px;
+            border: 1px solid var(--border-color);
+            letter-spacing: 0.5px;
         }
 
         .hero h1 {
             font-size: 2.5rem;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
         }
-        @media (min-width: 768px) { .hero h1 { font-size: 4rem; } }
+        @media (min-width: 768px) { .hero h1 { font-size: 3.8rem; } }
 
         .hero p {
             color: var(--text-muted);
-            font-size: 1.1rem;
-            max-width: 600px;
+            font-size: 1.125rem;
+            max-width: 640px;
             margin: 0 auto 40px;
         }
 
@@ -152,28 +150,30 @@ No Emergent. No subscriptions. No framework lock-in.
         .btn-primary {
             background: var(--text-main);
             color: var(--bg-slate);
-            padding: 15px 30px;
+            padding: 14px 32px;
             font-weight: 600;
-            border-radius: 5px;
+            border-radius: 6px;
             border: none;
             cursor: pointer;
+            font-size: 1rem;
         }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
 
         .btn-secondary {
             background: transparent;
             color: var(--text-main);
-            padding: 15px 30px;
+            padding: 14px 32px;
             border: 1px solid var(--border-color);
-            border-radius: 5px;
+            border-radius: 6px;
             font-weight: 600;
+            font-size: 1rem;
         }
         .btn-secondary:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
 
-        /* --- 6. PROBLEM AWARENESS SECTION --- */
+        /* --- 6. PROBLEM AWARENESS --- */
         .section-problem {
             padding: var(--section-padding);
-            background: #0b1120; /* Slightly darker */
+            background: #0b1120;
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
         }
@@ -188,7 +188,7 @@ No Emergent. No subscriptions. No framework lock-in.
 
         .card {
             background: var(--bg-card);
-            padding: 30px;
+            padding: 32px;
             border-radius: 12px;
             border: 1px solid var(--border-color);
             transition: 0.3s;
@@ -196,9 +196,9 @@ No Emergent. No subscriptions. No framework lock-in.
         .card:hover { border-color: var(--accent-cyan); transform: translateY(-5px); }
         .card h3 { margin: 15px 0 10px; font-size: 1.25rem; }
         .card p { color: var(--text-muted); font-size: 0.95rem; }
-        .icon-box { font-size: 1.5rem; margin-bottom: 10px; }
+        .icon-box { font-size: 1.8rem; margin-bottom: 12px; }
 
-        /* --- 7. PATHWAYS SECTION (SPLIT) --- */
+        /* --- 7. PATHWAYS SECTION --- */
         .section-pathways {
             padding: var(--section-padding);
             max-width: var(--container-width);
@@ -219,44 +219,116 @@ No Emergent. No subscriptions. No framework lock-in.
             padding: 40px;
             border-radius: 16px;
             border: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
             background: linear-gradient(180deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 1) 100%);
         }
 
-        /* Analog Styles */
         .path-analog { border-top: 4px solid var(--accent-copper); }
         .path-analog h3 { color: var(--accent-copper); }
         .path-analog .btn-path { border-color: var(--accent-copper); color: var(--accent-copper); }
-        .path-analog:hover { box-shadow: 0 0 30px rgba(245, 158, 11, 0.1); }
 
-        /* Digital Styles */
         .path-digital { border-top: 4px solid var(--accent-cyan); }
         .path-digital h3 { color: var(--accent-cyan); }
         .path-digital .btn-path { border-color: var(--accent-cyan); color: var(--accent-cyan); }
-        .path-digital:hover { box-shadow: 0 0 30px rgba(6, 182, 212, 0.1); }
 
-        .path-card ul { margin: 20px 0; }
-        .path-card li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; color: var(--text-muted); }
-        .path-card li::before { content: "•"; color: inherit; font-size: 1.5rem; line-height: 0; }
+        .path-card ul { margin: 24px 0; }
+        .path-card li { margin-bottom: 12px; display: flex; align-items: start; gap: 10px; color: var(--text-muted); font-size: 0.95rem; }
+        .path-card li::before { content: "•"; font-weight: bold; font-size: 1.2rem; line-height: 1rem; }
         
         .btn-path {
-            margin-top: 20px;
+            margin-top: 10px;
             display: inline-block;
-            padding: 12px 25px;
+            padding: 12px 24px;
             border: 1px solid;
-            border-radius: 5px;
-            font-weight: 600;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.95rem;
         }
 
-        /* --- 8. FOOTER / LEAD CAPTURE --- */
+        /* --- 8. FOUNDER SECTION (NEW) --- */
+        .section-founder {
+            padding: 100px 20px;
+            background: linear-gradient(to bottom, var(--bg-slate), #0b1120);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .founder-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .quote-box {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .quote-box blockquote {
+            font-size: 1.5rem;
+            font-weight: 500;
+            font-style: italic;
+            color: var(--text-main);
+            line-height: 1.4;
+            margin-bottom: 30px;
+        }
+        
+        .founder-profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        
+        /* PLACEHOLDER FOR IMAGE */
+        .founder-img {
+            width: 80px;
+            height: 80px;
+            background-color: var(--border-color); /* Replace with your image */
+            border-radius: 50%;
+            background-image: url('https://via.placeholder.com/150'); /* Delete this line when you have a real image */
+            background-size: cover;
+            border: 2px solid var(--accent-copper);
+        }
+
+        .founder-info h3 { font-size: 1.2rem; color: var(--text-main); margin-bottom: 4px; }
+        .founder-info p { font-size: 0.9rem; color: var(--accent-copper); font-weight: 500; }
+        .founder-info span { display: block; font-size: 0.85rem; color: var(--text-muted); margin-top: 2px; }
+
+        /* Expandable Bio Styles */
+        .bio-content {
+            display: none; /* Hidden by default */
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 12px;
+            margin-top: 30px;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            text-align: left;
+        }
+        .bio-content strong { color: var(--text-main); }
+        .bio-content p { margin-bottom: 20px; }
+
+        .btn-read-more {
+            display: block;
+            margin: 0 auto;
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            padding: 10px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-read-more:hover { color: var(--text-main); border-color: var(--text-main); }
+
+
+        /* --- 9. FOOTER --- */
         footer {
-            border-top: 1px solid var(--border-color);
             padding: 80px 20px;
             text-align: center;
             background: #0b1120;
         }
-        .footer-content { max-width: 600px; margin: 0 auto; }
+        .footer-content { max-width: 500px; margin: 0 auto; }
         .input-group {
             display: flex;
             gap: 10px;
@@ -267,21 +339,23 @@ No Emergent. No subscriptions. No framework lock-in.
 
         input[type="email"] {
             flex: 1;
-            padding: 15px;
+            padding: 14px;
             background: var(--bg-slate);
             border: 1px solid var(--border-color);
-            border-radius: 5px;
+            border-radius: 6px;
             color: white;
-            font-family: var(--font-body);
+            font-family: var(--font-main);
+            font-size: 1rem;
         }
         input:focus { outline: none; border-color: var(--accent-cyan); }
 
         .copyright {
-            margin-top: 50px;
+            margin-top: 60px;
             color: var(--text-muted);
-            font-size: 0.8rem;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 30px;
         }
-
     </style>
 </head>
 <body>
@@ -292,14 +366,14 @@ No Emergent. No subscriptions. No framework lock-in.
             <div class="nav-links">
                 <a href="#analog">Engineering</a>
                 <a href="#digital">AI Systems</a>
-                <a href="#about">Philosophy</a>
+                <a href="#about-founder">About Founder</a>
                 <a href="#contact" class="btn-nav">Apply for Mentorship</a>
             </div>
         </div>
     </nav>
 
     <header class="hero fade-up">
-        <span class="hero-badge mono">v2.0 // SYSTEM ONLINE</span>
+        <span class="hero-badge">Engineering Mentorship Ecosystem</span>
         <h1>Bridge the Gap Between <br> <span class="text-copper">Theory</span> & <span class="text-cyan">Real-World Mastery</span></h1>
         <p>A mentor-led ecosystem for engineers ready to transition from textbook memorization to intuitive design and digital leverage.</p>
         
@@ -331,15 +405,15 @@ No Emergent. No subscriptions. No framework lock-in.
 
     <section id="pathways" class="section-pathways">
         <div class="section-header fade-up">
-            <p class="mono">SELECT YOUR CONFIGURATION</p>
+            <p style="color: var(--accent-cyan); font-weight: 600; font-size: 0.9rem; margin-bottom: 10px;">SELECT YOUR CONFIGURATION</p>
             <h2>Choose Your Pathway</h2>
         </div>
 
         <div class="split-container">
             <div id="analog" class="path-card path-analog fade-up">
-                <div class="mono text-copper">// TRACK_A</div>
+                <p style="color: var(--accent-copper); font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px;">TRACK A</p>
                 <h3>The Circuit Architect</h3>
-                <p style="margin-top: 10px;">For students and EEs who want to master Analog Design, pass tough interviews, and build deep engineering intuition.</p>
+                <p style="margin-top: 10px; margin-bottom: 20px;">For students and EEs who want to master Analog Design, pass tough interviews, and build deep engineering intuition.</p>
                 <ul>
                     <li>Deep Circuit Intuition (No rote memorization)</li>
                     <li>Whiteboard Interview Prep</li>
@@ -349,9 +423,9 @@ No Emergent. No subscriptions. No framework lock-in.
             </div>
 
             <div id="digital" class="path-card path-digital fade-up" style="transition-delay: 200ms;">
-                <div class="mono text-cyan">// TRACK_B</div>
+                <p style="color: var(--accent-cyan); font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px;">TRACK B</p>
                 <h3>The Digital Builder</h3>
-                <p style="margin-top: 10px;">For engineers and creators who want to use AI to code faster, create content, and build digital income streams.</p>
+                <p style="margin-top: 10px; margin-bottom: 20px;">For engineers and creators who want to use AI to code faster, create content, and build digital income streams.</p>
                 <ul>
                     <li>AI-Augmented Workflows</li>
                     <li>Digital Asset Creation</li>
@@ -362,15 +436,52 @@ No Emergent. No subscriptions. No framework lock-in.
         </div>
     </section>
 
-    <section id="about" style="padding: 100px 20px; text-align: center; max-width: 800px; margin: 0 auto;" class="fade-up">
-        <h2 style="margin-bottom: 20px;">Mentorship, Not Just Content.</h2>
-        <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px;">
-            "Information is free. Insight is expensive. AdeptFlux isn't about watching 50 hours of video. It's about breaking down mental blocks. Whether we are analyzing a voltage divider or an AI prompt strategy, we use the same First Principles thinking."
-        </p>
-        <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-            <div style="width: 50px; height: 50px; background: #334155; border-radius: 50%;"></div> <div style="text-align: left;">
-                <div style="font-weight: 700;">Founder Name</div>
-                <div class="mono" style="font-size: 0.8rem;">Lead Mentor, AdeptFlux</div>
+    <section id="about-founder" class="section-founder fade-up">
+        <div class="founder-container">
+            <div class="quote-box">
+                <blockquote>
+                    “Most engineers don’t fail because they lack knowledge. 
+                    They struggle because no one taught them how to think like an engineer.”
+                </blockquote>
+            </div>
+
+            <div class="founder-profile">
+                <div class="founder-img"></div> 
+                
+                <div class="founder-info">
+                    <h3>Akash Gupta</h3>
+                    <p>Analog Design Engineer · Micron</p>
+                    <span>ex-Texas Instruments</span>
+                </div>
+            </div>
+
+            <button id="readMoreBtn" class="btn-read-more" onclick="toggleBio()">Read My Journey ↓</button>
+
+            <div id="fullBio" class="bio-content">
+                <p>I’m <strong>Akash</strong>, an Analog Design Engineer currently working at Micron, with prior experience at Texas Instruments.</p>
+
+                <p>My journey into core electronics wasn’t straightforward. During my B.Tech, I was the <strong>only person in my entire college</strong> who chose to pursue the Analog / VLSI design path seriously. At the time, there was little clarity, almost no peer ecosystem, and no structured mentorship around this field.</p>
+
+                <p>After graduating in 2020, I prepared for GATE, explored the depth of core electronics, and spent years building conceptual clarity rather than surface-level preparation. Eventually, I cracked Texas Instruments through an off-campus process — an experience that reshaped how I think about interviews, engineering problem-solving, and what the industry actually values.</p>
+
+                <p>Over the last 3.5+ years, across high-performance semiconductor environments, one pattern has remained consistent:</p>
+                
+                <p style="border-left: 3px solid var(--accent-copper); padding-left: 15px; color: var(--text-main);">
+                    Most capable engineers don’t struggle because they lack intelligence — they struggle because they lack structured thinking, context, and mentorship.
+                </p>
+
+                <p>That realization led to <strong>AdeptFlux</strong>. AdeptFlux is not a course platform. It’s a <strong>mentor-led ecosystem</strong>.</p>
+
+                <p>My goal is to bring together students, analog engineers, and technically curious learners — and help them bridge the gap between academics and industry, theory and intuition, learning and confidence.</p>
+                
+                <p><strong>Through AdeptFlux, I want to:</strong></p>
+                <ul style="list-style: disc; margin-left: 20px; margin-bottom: 20px;">
+                    <li>Encourage meaningful knowledge sharing within the electronics community.</li>
+                    <li>Help learners develop clear engineering thinking and articulation.</li>
+                    <li>Create guidance that feels <em>engineer-to-engineer</em>, not top-down.</li>
+                </ul>
+
+                <p>I believe strong engineers are built by <strong>how they think</strong>, not how much they memorize.</p>
             </div>
         </div>
     </section>
@@ -378,7 +489,7 @@ No Emergent. No subscriptions. No framework lock-in.
     <footer id="contact">
         <div class="footer-content fade-up">
             <h2>Join the Inner Circle</h2>
-            <p style="color: var(--text-muted); margin-top: 10px;">Get weekly breakdowns on circuit intuition, interview questions, and future-proof digital skills. No spam, just signal.</p>
+            <p style="color: var(--text-muted); margin-top: 10px;">Get weekly breakdowns on circuit intuition, interview questions, and future-proof digital skills.</p>
             
             <form class="input-group" onsubmit="event.preventDefault(); alert('Lead captured! Connect this to your email service.');">
                 <input type="email" placeholder="Enter your email address..." required>
@@ -392,11 +503,8 @@ No Emergent. No subscriptions. No framework lock-in.
     </footer>
 
     <script>
-        // Simple Intersection Observer to trigger animations when elements scroll into view
-        const observerOptions = {
-            threshold: 0.1
-        };
-
+        // 1. Scroll Animations
+        const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -408,6 +516,20 @@ No Emergent. No subscriptions. No framework lock-in.
         document.querySelectorAll('.fade-up').forEach(el => {
             observer.observe(el);
         });
+
+        // 2. Founder Bio Toggle
+        function toggleBio() {
+            var bio = document.getElementById("fullBio");
+            var btn = document.getElementById("readMoreBtn");
+            
+            if (bio.style.display === "block") {
+                bio.style.display = "none";
+                btn.innerHTML = "Read My Journey ↓";
+            } else {
+                bio.style.display = "block";
+                btn.innerHTML = "Close Bio ↑";
+            }
+        }
     </script>
 </body>
 </html>
