@@ -11,130 +11,89 @@ No Emergent. No subscriptions. No framework lock-in.
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AdeptFlux · Mentor-Led Engineering & AI</title>
+  <title>AdeptFlux · Mentor-Led Engineering & AI Ecosystem</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
     :root {
       --bg: #000;
       --text: #fff;
-      --text-soft: #b0b3b5; /* softer sub-line tone */
-      --card-bg: #1f2833;
+      --text-soft: #c5c6c7;
       --accent: #45a29e;
       --highlight: #66fcf1;
       --section-gap: 8rem;
     }
 
-    * {box-sizing:border-box;}
+    * {box-sizing: border-box;}
     html, body {
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family:"Inter",sans-serif;
-      scroll-behavior:smooth;
-      line-height:1.6;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+      line-height: 1.7;
+      scroll-behavior: smooth;
     }
-    h1,h2,h3 {
-      font-family:"Poppins",sans-serif;
-      color:var(--text);
+    h1, h2, h3 {
+      font-family: "Poppins", sans-serif;
+      color: var(--text);
+      margin-bottom: 1rem;
     }
-    a {color:var(--highlight);text-decoration:none;}
+    p {
+      color: var(--text-soft);
+      max-width: 900px;
+      margin: auto;
+    }
     a[role="button"] {
-      background:var(--accent);
-      border:none;
-      color:#000;
-      padding:.8rem 1.6rem;
-      border-radius:4px;
-      transition:all .3s ease;
+      background: var(--accent);
+      color: #000;
+      border: none;
+      padding: 0.8rem 1.6rem;
+      border-radius: 4px;
+      transition: all 0.3s ease;
     }
     a[role="button"]:hover {
-      background:var(--highlight);
-      color:#000;
-      transform:translateY(-2px);
-      box-shadow:0 0 10px var(--highlight);
+      background: var(--highlight);
+      color: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 0 8px var(--highlight);
     }
-
-    /* NAV */
     nav {
-      position:fixed;
-      top:0;width:100%;
-      background:rgba(0,0,0,0.9);
-      border-bottom:1px solid #1f2833;
-      display:flex;justify-content:space-between;align-items:center;
-      padding:1rem 3vw;z-index:999;
+      position: fixed;
+      top: 0; width: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      border-bottom: 1px solid #1f2833;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 3vw; z-index: 999;
     }
-    nav a {color:#fff;margin:0 .9rem;}
-    nav strong {color:var(--highlight);}
-
-    /* HERO */
-    header {
-      min-height:100vh;
-      display:flex;flex-direction:column;justify-content:center;align-items:center;
-      text-align:center;
-      background:radial-gradient(circle at 50% 50%,rgba(69,162,158,.15),#000);
-      padding:0 5vw;
+    nav a { color: #fff; margin: 0 0.8rem; }
+    nav strong { color: var(--highlight); }
+    section {
+      padding: var(--section-gap) 10vw;
+      text-align: center;
     }
-    header h1 {font-size:clamp(2rem,5vw,3.5rem);}
-    header p {max-width:900px;margin:1.5rem auto;color:var(--text-soft);}
-    header a {margin-top:1rem;}
-
-    section {width:100%;padding:var(--section-gap) 8vw;}
-
-    /* FEATURE CARDS */
-    .features-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:2rem;
-      max-width:1300px;
-      margin:auto;
-    }
-    .feature {
-      background:var(--card-bg);
-      border-radius:1rem;
-      padding:2rem 3rem;
-      transition:transform .3s ease, background .3s ease;
-      text-align:left;
-    }
-    .feature:hover {
-      transform:translateY(-5px);
-      background:#24303c;
-    }
-    .feature h3 {
-      color:var(--text);
-      font-weight:700;
-    }
-    .feature p {
-      color:var(--text-soft);
-      margin-top:.5rem;
-      font-weight:400;
-    }
-
-    /* FOUNDER NOTE */
-    .founder {background:#0b0c10;text-align:center;}
-    blockquote {
-      color:var(--text-soft);
-      font-style:italic;
-      margin:2rem auto;
-      max-width:800px;
-      line-height:1.8;
-    }
-
     footer {
-      background:#1f2833;
-      text-align:center;
-      padding:2rem;
-      color:var(--text-soft);
+      background: #1f2833;
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-soft);
     }
-
-    @media(max-width:768px){
-      nav{flex-direction:column;align-items:flex-start;}
-      nav div:last-child{margin-top:.5rem;}
-      .feature{text-align:center;}
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      align-items: start;
+      text-align: left;
+      max-width: 1200px;
+      margin: auto;
+    }
+    @media(max-width: 768px) {
+      nav { flex-direction: column; align-items: flex-start; }
+      section { text-align: left; padding: 5rem 2rem; }
     }
   </style>
 </head>
+
 <body>
-  <!-- NAV -->
   <nav>
     <div><strong>AdeptFlux</strong></div>
     <div>
@@ -148,80 +107,100 @@ No Emergent. No subscriptions. No framework lock-in.
   </nav>
 
   <!-- HERO -->
-  <header data-aos="fade-up">
-    <h1>From Circuit Intuition to AI-Powered Skills</h1>
-    <p>AdeptFlux helps students and engineers move from theoretical understanding to real-world clarity — guided through mentorship, context, and structured thinking.</p>
-    <a href="join.html" role="button">Join the Ecosystem</a>
-  </header>
-
-  <!-- MISSING LAYER -->
-  <section data-aos="fade-up">
-    <h2>The Missing Layer in Technical Education</h2>
-    <div class="features-grid">
-      <div class="feature">
-        <h3>Knowledge Without Clarity</h3>
-        <p>Understanding theory but struggling to explain or apply it.</p>
-      </div>
-      <div class="feature">
-        <h3>Interviews Without Structure</h3>
-        <p>Freezing not due to lack of skill, but due to missing frameworks.</p>
-      </div>
-      <div class="feature">
-        <h3>AI Without Direction</h3>
-        <p>Tools exist, but without fundamentals, leverage feels overwhelming.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FRAMEWORK -->
-  <section data-aos="fade-up">
-    <h2>The AdeptFlux Framework</h2>
-    <div class="features-grid">
-      <div class="feature">
-        <h3>1. Learn</h3>
-        <p>Strengthen your fundamentals through guided mentorship and practical reasoning.</p>
-      </div>
-      <div class="feature">
-        <h3>2. Think</h3>
-        <p>Build structured thinking — the skill that separates engineers from executors.</p>
-      </div>
-      <div class="feature">
-        <h3>3. Monetize</h3>
-        <p>Translate your technical skills into real-world opportunities and income pathways.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOUNDER NOTE -->
-  <section class="founder" data-aos="fade-up">
-    <h2 style="color:var(--highlight);">Founder’s Note</h2>
-    <blockquote>
-      “Most engineers don’t fail because they lack knowledge. They struggle because no one taught them how to think like an engineer. AdeptFlux exists to bridge that gap — with mentorship, clarity, and long-term learning.”
-      <br><br>— <strong>Akash</strong>, Founder of AdeptFlux
-    </blockquote>
-    <p style="color:var(--accent);margin-top:-1rem;">
-      Analog IC Designer – Micron Technology Inc. | ex-Texas Instruments
+  <section style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;" data-aos="fade-up">
+    <h1>Engineering Thinking in the Age of AI</h1>
+    <p>
+      AdeptFlux is a mentor-led ecosystem helping engineers move from theoretical understanding to real-world clarity. 
+      It exists to reintroduce depth, calm, and purpose into technical learning — replacing noise with direction.
     </p>
-    <div style="margin-top:3rem;">
-      <a href="about.html" role="button">Read My Story</a>
+    <p style="margin-top:1.5rem;">
+      We believe clarity isn’t found in more content, but in better conversations — between engineers who think before they build.
+    </p>
+    <a href="join.html" role="button" style="margin-top:2rem;">Explore the Ecosystem</a>
+  </section>
+
+  <!-- RELATABILITY LAYER -->
+  <section data-aos="fade-up">
+    <h2>If This Sounds Like You</h2>
+    <div class="two-column">
+      <div>
+        <p>You know your subjects well — but when asked to explain a circuit, your words hesitate.</p>
+        <p>You’ve studied for interviews but freeze when a question tests your thinking, not your memory.</p>
+        <p>AI tools promise shortcuts, but instead, they multiply confusion. You’re not lost — just unsatisfied with shallow learning.</p>
+        <p>You want a mentor, not an algorithm. You want to learn deeply and think like an engineer again.</p>
+      </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section data-aos="fade-up" style="text-align:center;">
-    <h2>Ready to Begin Your Engineering Journey?</h2>
-    <p style="color:var(--text-soft);max-width:700px;margin:auto;">
-      Join a mentor-led ecosystem that helps you think, build, and grow with clarity.
-    </p>
-    <a href="join.html" role="button">Join the Ecosystem</a>
+  <!-- FOUNDER CONTEXT -->
+  <section data-aos="fade-up">
+    <h2>Why AdeptFlux Exists</h2>
+    <div class="two-column">
+      <div>
+        <p>AdeptFlux wasn’t built to sell courses. It was built because a young engineer once struggled to connect what he learned with what the world expected him to know.</p>
+        <p>From nights spent debugging circuits to learning how to explain ideas clearly, the journey revealed something deeper — that most engineers don’t fail due to lack of knowledge, but lack of structured mentorship.</p>
+        <p>AdeptFlux grew from that realization — a quiet responsibility to guide others through the same fog, with patience and precision.</p>
+      </div>
+    </div>
   </section>
 
-  <footer>© 2026 AdeptFlux · Independent · Mentor-Led · Future-Ready</footer>
+  <!-- PHILOSOPHY -->
+  <section data-aos="fade-up">
+    <h2>The AdeptFlux Philosophy</h2>
+    <div class="two-column">
+      <div>
+        <p>We believe engineering is first a way of thinking — tools come later. In a world racing for shortcuts, AdeptFlux chooses depth.</p>
+        <p>Clarity before speed. Mentorship before algorithms. Long-term mastery over temporary confidence.</p>
+        <p>Our mission is not to give you answers — but to make you the kind of engineer who asks better questions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT ADEPTFLUX HELPS WITH -->
+  <section data-aos="fade-up">
+    <h2>What We Actually Help You With</h2>
+    <div class="two-column">
+      <div>
+        <p>At AdeptFlux, you learn to build an engineering mindset — the ability to translate knowledge into reasoning. You learn to articulate thoughts, not just recall formulas.</p>
+        <p>Interviews stop feeling like tests. They become conversations about your way of thinking.</p>
+        <p>You’ll use AI as leverage, not dependency — an assistant in your clarity, not a crutch for your confusion.</p>
+        <p>Every step is guided, deliberate, and rooted in fundamentals that never expire.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY & ECOSYSTEM -->
+  <section data-aos="fade-up">
+    <h2>The AdeptFlux Ecosystem</h2>
+    <div class="two-column">
+      <div>
+        <p>AdeptFlux is more than mentorship — it’s a space where engineers grow together.</p>
+        <p>Students find direction, professionals share context, and knowledge flows back to where it matters most: the learner’s curiosity.</p>
+        <p>We’re building a bridge between academia and industry — an ecosystem that matures with every engineer who joins and contributes.</p>
+        <p>It’s not a one-time program. It’s a mindset that lasts a career.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOFT CTA -->
+  <section data-aos="fade-up">
+    <h2>Begin with Clarity</h2>
+    <p>
+      AdeptFlux isn’t here to rush you. Take your time. Read. Reflect.  
+      When you’re ready to think deeply again — we’ll be here.
+    </p>
+    <a href="join.html" role="button" style="margin-top:2rem;">Join When You’re Ready</a>
+  </section>
+
+  <footer>© 2026 AdeptFlux · Mentor-Led · Future-Ready</footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init({duration:1000,once:true});</script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+  </script>
 </body>
 </html>
+
 
 
 
