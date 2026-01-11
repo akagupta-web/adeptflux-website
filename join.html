@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Join the AdeptFlux Ecosystem</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      background:#000;
+      color:#fff;
+      font-family:"Inter",sans-serif;
+      scroll-behavior:smooth;
+    }
+    h1,h2,h3 {
+      color:#fff;
+      font-family:"Poppins",sans-serif;
+    }
+    a[role="button"],button {
+      background:#45a29e;
+      border:none;
+      color:#000;
+      padding:.75rem 1.5rem;
+    }
+    a[role="button"]:hover,button:hover {
+      background:#66fcf1;
+      color:#000;
+    }
+    main {
+      padding:8rem 2rem 6rem;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+      gap:3rem;
+      align-items:start;
+    }
+    form {
+      background:#1f2833;
+      border-radius:1rem;
+      padding:2rem;
+    }
+    input,select,textarea {
+      background:#0b0c10;
+      color:#fff;
+      border:none;
+    }
+    footer {
+      background:#1f2833;
+      text-align:center;
+      padding:2rem;
+      color:#c5c6c7;
+    }
+    .info {
+      padding-right:1rem;
+    }
+    .info p {
+      color:#c5c6c7;
+      line-height:1.7;
+      margin-bottom:1.2rem;
+    }
+    .benefits {
+      margin-top:1rem;
+      list-style:disc;
+      padding-left:1.5rem;
+      color:#c5c6c7;
+    }
+  </style>
+</head>
+<body>
+  <main data-aos="fade-up">
+    <div class="form-side">
+      <h1>Join the AdeptFlux Ecosystem</h1>
+      <p style="color:#c5c6c7;">Fill in your details to apply for entry into the AdeptFlux mentorship and learning community.</p>
+      <form id="joinForm" class="grid">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <select required>
+          <option value="">Select Interest</option>
+          <option>Analog / Circuit Design</option>
+          <option>AI & Digital Skills</option>
+          <option>Both</option>
+        </select>
+        <textarea placeholder="Tell us briefly about your goals…" rows="4"></textarea>
+        <button type="submit">Submit</button>
+      </form>
+      <p id="successMsg" style="display:none;margin-top:2rem;color:#66fcf1;">
+        ✅ Thank you! You’ll receive your AdeptFlux orientation email and WhatsApp invite soon.
+      </p>
+    </div>
+
+    <div class="info" data-aos="fade-left">
+      <h2>Why Join the Ecosystem?</h2>
+      <p>AdeptFlux is more than a course — it’s a structured mentorship network guiding engineers from theory to real-world clarity and monetizable skills.</p>
+
+      <h3>Who It’s For</h3>
+      <ul class="benefits">
+        <li>Students and fresh graduates aiming for circuit & analog mastery.</li>
+        <li>Engineers preparing for interviews who need thinking frameworks.</li>
+        <li>Professionals exploring AI-assisted engineering workflows.</li>
+      </ul>
+
+      <h3>What You Receive</h3>
+      <ul class="benefits">
+        <li>Access to private mentor-led sessions.</li>
+        <li>Exclusive discussion and resource groups (WhatsApp & community platform).</li>
+        <li>Priority entry into upcoming AdeptFlux learning tracks.</li>
+      </ul>
+
+      <h3>Next Steps</h3>
+      <p>After you submit your details, you’ll get a confirmation mail and the link to the AdeptFlux WhatsApp group where all onboarding details are shared.</p>
+    </div>
+  </main>
+
+  <footer>© 2026 AdeptFlux · Mentor-Led · Future-Ready</footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({duration:1000,once:true});
+    document.getElementById('joinForm').addEventListener('submit', e=>{
+      e.preventDefault();
+      document.getElementById('successMsg').style.display='block';
+    });
+  </script>
+</body>
+</html>
