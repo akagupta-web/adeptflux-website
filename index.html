@@ -15,78 +15,112 @@ No Emergent. No subscriptions. No framework lock-in.
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
-    body {
-      background: #000;
-      color: #fff;
-      font-family: "Inter", sans-serif;
-      scroll-behavior: smooth;
-      line-height: 1.6;
+    :root {
+      --bg: #000;
+      --text: #fff;
+      --text-soft: #c5c6c7;
+      --accent: #45a29e;
+      --highlight: #66fcf1;
+      --section-gap: 8rem;
+    }
+    * {box-sizing:border-box;}
+    html,body {
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:"Inter",sans-serif;
+      scroll-behavior:smooth;
+      line-height:1.6;
     }
     h1,h2,h3 {
-      font-family: "Poppins", sans-serif;
-      color: #fff;
+      font-family:"Poppins",sans-serif;
+      color:var(--text);
     }
-    a {
-      color: #66fcf1;
-      text-decoration: none;
-    }
+    a {color:var(--highlight);text-decoration:none;}
     a[role="button"] {
-      background: #45a29e;
-      color: #000;
-      border: none;
+      background:var(--accent);
+      border:none;
+      color:#000;
+      padding:.8rem 1.6rem;
+      border-radius:4px;
+      transition:all .3s ease;
     }
     a[role="button"]:hover {
-      background: #66fcf1;
-      color: #000;
+      background:var(--highlight);
+      color:#000;
+      transform:translateY(-2px);
+      box-shadow:0 0 10px var(--highlight);
     }
+
+    /* NAVIGATION */
     nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.95);
-      border-bottom: 1px solid #1f2833;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      z-index: 999;
+      position:fixed;top:0;width:100%;
+      background:rgba(0,0,0,0.9);
+      border-bottom:1px solid #1f2833;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:1rem 3vw;z-index:999;
     }
-    nav a {
-      color: #fff;
-      margin: 0 .8rem;
-    }
+    nav a {color:var(--text);margin:0 .9rem;}
+    nav strong {color:var(--highlight);}
+
+    /* HERO */
     header {
-      text-align: center;
-      padding: 10rem 2rem 6rem;
-      background: radial-gradient(circle at 50% 50%, rgba(69,162,158,.2), #000);
+      min-height:100vh;
+      display:flex;flex-direction:column;justify-content:center;align-items:center;
+      text-align:center;
+      background:radial-gradient(circle at 50% 50%,rgba(69,162,158,.15),#000);
+      padding:0 5vw;
     }
+    header h1 {font-size:clamp(2rem,5vw,3.5rem);}
+    header p {max-width:900px;margin:1.5rem auto;color:var(--text-soft);}
+    header a {margin-top:1rem;}
+
     section {
-      padding: 6rem 2rem;
-      text-align: center;
+      width:100%;
+      padding:var(--section-gap) 8vw;
     }
+
     .feature {
-      background: #1f2833;
-      border-radius: 1rem;
-      padding: 2rem;
-      max-width: 800px;
-      margin: 2rem auto;
+      background:#1f2833;
+      border-radius:1rem;
+      padding:2rem 3rem;
+      max-width:1200px;
+      margin:2rem auto;
+      text-align:left;
+      transition:transform .3s ease;
     }
-    footer {
-      background: #1f2833;
-      text-align: center;
-      padding: 2rem;
-      color: #c5c6c7;
+    .feature:hover {transform:translateY(-5px);}
+    .features-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:2rem;
+      max-width:1300px;
+      margin:auto;
     }
+
     .founder {
-      background: #0b0c10;
-      padding: 6rem 2rem;
+      background:#0b0c10;
+      text-align:center;
     }
     blockquote {
-      color: #c5c6c7;
-      font-style: italic;
-      margin: 2rem auto;
-      max-width: 800px;
-      line-height: 1.8;
+      color:var(--text-soft);
+      font-style:italic;
+      margin:2rem auto;
+      max-width:800px;
+      line-height:1.8;
+    }
+
+    footer {
+      background:#1f2833;
+      text-align:center;
+      padding:2rem;
+      color:var(--text-soft);
+    }
+
+    @media(max-width:768px){
+      nav{flex-direction:column;align-items:flex-start;}
+      nav div:last-child{margin-top:.5rem;}
+      .feature{text-align:center;}
     }
   </style>
 </head>
@@ -94,7 +128,7 @@ No Emergent. No subscriptions. No framework lock-in.
 <body>
   <!-- NAVIGATION -->
   <nav>
-    <div style="font-weight:700;color:#66fcf1;">AdeptFlux</div>
+    <div><strong>AdeptFlux</strong></div>
     <div>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -108,54 +142,49 @@ No Emergent. No subscriptions. No framework lock-in.
   <!-- HERO -->
   <header data-aos="fade-up">
     <h1>From Circuit Intuition to AI-Powered Skills</h1>
-    <p style="max-width:700px;margin:auto;color:#c5c6c7;">
-      AdeptFlux helps students and engineers move from theoretical understanding to real-world clarity — guided through mentorship, context, and structured thinking.
-    </p>
+    <p>AdeptFlux helps students and engineers move from theoretical understanding to real-world clarity — guided through mentorship, context, and structured thinking.</p>
     <a href="join.html" role="button">Join the Ecosystem</a>
   </header>
 
-  <!-- THE MISSING LAYER -->
+  <!-- MISSING LAYER -->
   <section data-aos="fade-up">
     <h2>The Missing Layer in Technical Education</h2>
-    <div class="feature"><h3>Knowledge Without Clarity</h3><p>Understanding theory but struggling to explain or apply it.</p></div>
-    <div class="feature"><h3>Interviews Without Structure</h3><p>Freezing not due to lack of skill, but due to missing frameworks.</p></div>
-    <div class="feature"><h3>AI Without Direction</h3><p>Tools exist, but without fundamentals, leverage feels overwhelming.</p></div>
+    <div class="features-grid">
+      <div class="feature"><h3>Knowledge Without Clarity</h3><p>Understanding theory but struggling to explain or apply it.</p></div>
+      <div class="feature"><h3>Interviews Without Structure</h3><p>Freezing not due to lack of skill, but due to missing frameworks.</p></div>
+      <div class="feature"><h3>AI Without Direction</h3><p>Tools exist, but without fundamentals, leverage feels overwhelming.</p></div>
+    </div>
   </section>
 
   <!-- FRAMEWORK -->
   <section data-aos="fade-up">
     <h2>The AdeptFlux Framework</h2>
-    <div class="feature">
-      <h3>1. Learn</h3>
-      <p>Strengthen your fundamentals through guided mentorship and practical reasoning.</p>
-    </div>
-    <div class="feature">
-      <h3>2. Think</h3>
-      <p>Build structured thinking — the skill that separates engineers from executors.</p>
-    </div>
-    <div class="feature">
-      <h3>3. Monetize</h3>
-      <p>Translate your technical skills into real-world opportunities and income pathways.</p>
+    <div class="features-grid">
+      <div class="feature"><h3>1. Learn</h3><p>Strengthen your fundamentals through guided mentorship and practical reasoning.</p></div>
+      <div class="feature"><h3>2. Think</h3><p>Build structured thinking — the skill that separates engineers from executors.</p></div>
+      <div class="feature"><h3>3. Monetize</h3><p>Translate your technical skills into real-world opportunities and income pathways.</p></div>
     </div>
   </section>
 
   <!-- FOUNDER NOTE -->
   <section class="founder" data-aos="fade-up">
-    <h2 style="color:#66fcf1;">Founder’s Note</h2>
+    <h2 style="color:var(--highlight);">Founder’s Note</h2>
     <blockquote>
       “Most engineers don’t fail because they lack knowledge. They struggle because no one taught them how to think like an engineer. AdeptFlux exists to bridge that gap — with mentorship, clarity, and long-term learning.”
       <br><br>— <strong>Akash</strong>, Founder of AdeptFlux
     </blockquote>
-    <p style="color:#45a29e;margin-top:-1rem;">Analog IC Designer – Micron Technology Inc. | ex-Texas Instruments</p>
+    <p style="color:var(--accent);margin-top:-1rem;">
+      Analog IC Designer – Micron Technology Inc. | ex-Texas Instruments
+    </p>
     <div style="margin-top:3rem;">
       <a href="about.html" role="button">Read My Story</a>
     </div>
   </section>
 
   <!-- CTA -->
-  <section data-aos="fade-up">
+  <section data-aos="fade-up" style="text-align:center;">
     <h2>Ready to Begin Your Engineering Journey?</h2>
-    <p style="color:#c5c6c7;">Join a mentor-led ecosystem that helps you think, build, and grow with clarity.</p>
+    <p style="color:var(--text-soft);max-width:700px;margin:auto;">Join a mentor-led ecosystem that helps you think, build, and grow with clarity.</p>
     <a href="join.html" role="button">Join the Ecosystem</a>
   </section>
 
@@ -165,3 +194,4 @@ No Emergent. No subscriptions. No framework lock-in.
   <script>AOS.init({duration:1000,once:true});</script>
 </body>
 </html>
+
