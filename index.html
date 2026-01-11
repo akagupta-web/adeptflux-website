@@ -6,290 +6,523 @@ You can copy this into index.html and deploy via GitHub + Vercel.
 No Emergent. No subscriptions. No framework lock-in.
 -->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AdeptFlux · Mentor-Led Engineering & AI Ecosystem</title>
+<!DOCTYPE html> 
 
-  <!-- Metadata -->
-  <meta name="description" content="AdeptFlux helps engineers move from theoretical understanding to real-world clarity through mentorship, structure, and AI-powered thinking." />
-  <meta property="og:title" content="AdeptFlux · Mentor-Led Engineering & AI" />
-  <meta property="og:description" content="Learn, think, and build clarity with AdeptFlux — a mentor-led ecosystem for engineers and learners." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="akash.jpg" />
+<html lang="en"> 
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
-  <style>
-    :root {
-      --bg: #000;
-      --text: #fff;
-      --text-soft: #c5c6c7;
-      --accent: #45a29e;
-      --highlight: #66fcf1;
-      --blur-bg: rgba(0, 0, 0, 0.65);
-    }
-    * {box-sizing: border-box; margin: 0; padding: 0;}
-    html {scroll-behavior: smooth;}
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Inter", sans-serif;
-      line-height: 1.7;
-      overflow-x: hidden;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-    body.loaded {opacity: 1;}
+<head> 
 
-    /* NAVBAR */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      backdrop-filter: blur(8px);
-      background: var(--blur-bg);
-      border-bottom: 1px solid #1f2833;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 4vw;
-      z-index: 999;
-      transition: background 0.3s ease;
-    }
-    nav.scrolled {background: rgba(0, 0, 0, 0.85);}
-    nav a {color: var(--text); margin: 0 0.8rem;}
-    nav strong {color: var(--highlight);}
-    a[role="button"] {
-      background: var(--accent);
-      color: #000;
-      padding: 0.7rem 1.4rem;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-    }
-    a[role="button"]:hover {
-      background: var(--highlight);
-      color: #000;
-      transform: translateY(-2px);
-      box-shadow: 0 0 10px var(--highlight);
-    }
+  <meta charset="UTF-8" /> 
 
-    /* HERO */
-    header {
-      position: relative;
-      min-height: 95vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      overflow: hidden;
-      padding: 0 6vw;
-    }
-    header::before {
-      content: "";
-      position: absolute;
-      top: -20%;
-      left: -20%;
-      width: 140%;
-      height: 140%;
-      background: radial-gradient(circle at 30% 30%, rgba(69,162,158,0.15), transparent 70%);
-      z-index: 0;
-      transform: translateY(0);
-      transition: transform 1s ease-out;
-    }
-    header h1 {font-family: "Poppins", sans-serif; font-size: clamp(2.2rem, 5vw, 3.6rem); z-index: 1;}
-    header p {max-width: 900px; margin-top: 1.4rem; color: var(--text-soft); z-index: 1;}
-    header a {margin-top: 2rem; z-index: 1;}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
 
-    section {
-      padding: 5rem 6vw;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease-out;
-      max-width: 1200px;
-      margin: auto;
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  <title>AdeptFlux — Engineering, AI & Skill Leverage</title> 
 
-    .two-column {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 3rem;
-      align-items: center;
-      text-align: left;
-    }
-    .founder-img {
-      width: 100%;
-      border-radius: 1rem;
-      max-width: 460px;
-      display: block;
-      margin: auto;
-    }
+  <meta name="description" content="AdeptFlux is a mentor-led ecosystem helping engineers and learners move from theory to real-world thinking and AI-powered skills." /> 
 
-    footer {
-      background: #1f2833;
-      text-align: center;
-      padding: 2rem;
-      color: var(--text-soft);
-    }
+  
 
-    @media (max-width: 768px) {
-      nav {flex-direction: column; align-items: flex-start;}
-      header, section {text-align: left; padding: 3rem 1.5rem;}
-    }
-  </style>
-</head>
+  <!-- Google Font --> 
 
-<body>
-  <!-- NAV -->
-  <nav id="navbar">
-    <div><strong>AdeptFlux</strong></div>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="what-we-do.html">Programs</a>
-      <a href="join.html">Join</a>
-      <a href="contact.html">Contact</a>
-      <a href="join.html" role="button">Apply Now</a>
-    </div>
-  </nav>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /> 
 
-  <!-- HERO -->
-  <header id="hero">
-    <h1>From Circuit Intuition to AI-Powered Thinking</h1>
-    <p>
-      AdeptFlux helps engineers move from theoretical understanding to real-world clarity —
-      guided by mentorship, structure, and deliberate reflection.
-    </p>
-    <p>
-      A calm, mentor-led ecosystem for those who value clarity over speed.
-    </p>
-    <a href="join.html" role="button">Join the Ecosystem</a>
-  </header>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> 
 
-  <!-- RELATABILITY -->
-  <section>
-    <h2>If This Sounds Like You</h2>
-    <div class="two-column">
-      <div>
-        <p>You understand your subjects — yet when asked to explain a circuit, clarity fades.</p>
-        <p>You’ve studied for interviews but freeze when reasoning is tested instead of recall.</p>
-        <p>You see AI everywhere, but not as leverage — it feels distant, noisy, and unclear.</p>
-        <p>You want guidance, not more content. You want mentorship that builds thinkers, not followers.</p>
-      </div>
-    </div>
-  </section>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" /> 
 
-  <!-- PHILOSOPHY -->
-  <section>
-    <h2>The AdeptFlux Philosophy</h2>
-    <div class="two-column">
-      <div>
-        <p>Engineering begins with thinking, not memorizing. In a world chasing shortcuts, AdeptFlux chooses depth.</p>
-        <p>Clarity before speed. Mentorship before algorithms. Long-term mastery before short-term gain.</p>
-        <p>Our mission is not to give you answers, but to help you ask better questions.</p>
-      </div>
-    </div>
-  </section>
+  
 
-  <!-- FOUNDER -->
-  <section>
-    <h2>Founder’s Note</h2>
-    <div class="two-column">
-      <div>
-        <p>“Most engineers don’t fail because they lack knowledge. They struggle because no one taught them how to think like an engineer. AdeptFlux exists to bridge that gap — with mentorship, clarity, and long-term learning.”</p>
-        <p style="color: var(--accent); margin-top:1rem;">
-          — Akash, Founder of AdeptFlux<br>
-          Analog IC Designer, Micron Technology Inc. | ex-Texas Instruments
-        </p>
-      </div>
-      <div>
-        <img src="akash.jpg" alt="Founder portrait" class="founder-img" />
-      </div>
-    </div>
-  </section>
+  <style> 
 
-  <!-- WHAT WE DO -->
-  <section>
-    <h2>What AdeptFlux Helps You With</h2>
-    <div class="two-column">
-      <div>
-        <p>We help engineers transition from theoretical understanding to real-world clarity.</p>
-        <p>Through guided mentorship and structured thinking, interviews stop feeling like tests — they become conversations about logic and reasoning.</p>
-        <p>AI becomes leverage, not dependency. Fundamentals become the foundation for creativity.</p>
-      </div>
-    </div>
-  </section>
+    :root { 
 
-  <!-- ECOSYSTEM -->
-  <section>
-    <h2>The AdeptFlux Ecosystem</h2>
-    <div class="two-column">
-      <div>
-        <p>AdeptFlux isn’t a course; it’s a long-term ecosystem built by engineers, for engineers.</p>
-        <p>Students gain direction, professionals share context, and ideas flow between academia and industry.</p>
-        <p>It’s a community that values clarity over complexity, mentorship over metrics, and thinking over shortcuts.</p>
-      </div>
-    </div>
-  </section>
+      --bg-main: #0b0d12; 
 
-  <!-- CTA -->
-  <section>
-    <h2>Begin with Clarity</h2>
-    <p>
-      Engineering growth begins with the right mindset — not the next tutorial.
-      When you’re ready to think deeply again, join us.
-    </p>
-    <a href="join.html" role="button">Join When You’re Ready</a>
-  </section>
+      --bg-card: #111522; 
 
-  <footer>© 2026 AdeptFlux · Mentor-Led · Future-Ready</footer>
+      --text-main: #ffffff; 
 
-  <!-- JS -->
-  <script>
-    // PRELOADER FADE
-    window.addEventListener('load', () => {
-      document.body.classList.add('loaded');
-    });
+      --text-muted: #9aa0aa; 
 
-    // NAVBAR SCROLL EFFECT
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 80) navbar.classList.add('scrolled');
-      else navbar.classList.remove('scrolled');
-    });
+      --accent: #2ec4b6; 
 
-    // FADE/SLIDE SECTIONS ON SCROLL
-    const sections = document.querySelectorAll('section');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-    sections.forEach(section => observer.observe(section));
+      --border: #1f2433; 
 
-    // PARALLAX HERO BACKGROUND
-    const hero = document.getElementById('hero');
-    window.addEventListener('scroll', () => {
-      const offset = window.scrollY * 0.3;
-      hero.style.setProperty('--offset', `${offset}px`);
-      hero.style.backgroundPositionY = `${offset * 0.5}px`;
-      hero.querySelector('::before');
-    });
-  </script>
-</body>
-</html>
+    } 
+
+  
+
+    * { box-sizing: border-box; margin: 0; padding: 0; } 
+
+  
+
+    body { 
+
+      font-family: 'Inter', sans-serif; 
+
+      background: var(--bg-main); 
+
+      color: var(--text-main); 
+
+      line-height: 1.7; 
+
+      overflow-x: hidden; 
+
+    } 
+
+  
+
+    a { color: inherit; text-decoration: none; } 
+
+  
+
+    .container { 
+
+      max-width: 1200px; 
+
+      margin: 0 auto; 
+
+      padding: 0 24px; 
+
+    } 
+
+  
+
+    section { 
+
+      padding: 120px 0; 
+
+      border-bottom: 1px solid var(--border); 
+
+    } 
+
+  
+
+    h1 { 
+
+      font-size: 56px; 
+
+      font-weight: 700; 
+
+      line-height: 1.15; 
+
+      letter-spacing: -0.02em; 
+
+    } 
+
+  
+
+    h2 { 
+
+      font-size: 40px; 
+
+      font-weight: 600; 
+
+      margin-bottom: 20px; 
+
+    } 
+
+  
+
+    h3 { 
+
+      font-size: 22px; 
+
+      font-weight: 600; 
+
+      margin-bottom: 10px; 
+
+    } 
+
+  
+
+    p { 
+
+      color: var(--text-muted); 
+
+      max-width: 820px; 
+
+    } 
+
+  
+
+    /* NAV */ 
+
+    .nav { 
+
+      position: fixed; 
+
+      top: 24px; 
+
+      left: 50%; 
+
+      transform: translateX(-50%); 
+
+      background: rgba(17,21,34,0.8); 
+
+      backdrop-filter: blur(12px); 
+
+      border: 1px solid var(--border); 
+
+      padding: 12px 24px; 
+
+      border-radius: 999px; 
+
+      z-index: 50; 
+
+      font-size: 14px; 
+
+      color: var(--text-muted); 
+
+    } 
+
+  
+
+    /* HERO */ 
+
+    .hero { 
+
+      min-height: 100vh; 
+
+      display: flex; 
+
+      align-items: center; 
+
+    } 
+
+  
+
+    .hero p { 
+
+      font-size: 18px; 
+
+      margin: 28px 0 40px; 
+
+    } 
+
+  
+
+    .btn { 
+
+      display: inline-block; 
+
+      background: var(--accent); 
+
+      color: #0b0d12; 
+
+      padding: 14px 32px; 
+
+      border-radius: 10px; 
+
+      font-weight: 600; 
+
+      transition: all 0.25s ease; 
+
+    } 
+
+  
+
+    .btn:hover { transform: translateY(-2px); opacity: 0.95; } 
+
+  
+
+    /* GRID */ 
+
+    .grid { 
+
+      display: grid; 
+
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+
+      gap: 40px; 
+
+      margin-top: 60px; 
+
+    } 
+
+  
+
+    .card { 
+
+      background: var(--bg-card); 
+
+      border: 1px solid var(--border); 
+
+      padding: 36px; 
+
+      border-radius: 16px; 
+
+      transition: transform 0.3s ease, border-color 0.3s ease; 
+
+    } 
+
+  
+
+    .card:hover { 
+
+      transform: translateY(-6px); 
+
+      border-color: var(--accent); 
+
+    } 
+
+  
+
+    /* CTA */ 
+
+    .cta { 
+
+      text-align: center; 
+
+    } 
+
+  
+
+    .cta p { margin: 24px auto 40px; } 
+
+  
+
+    footer { 
+
+      padding: 64px 0; 
+
+      text-align: center; 
+
+      color: var(--text-muted); 
+
+      font-size: 14px; 
+
+    } 
+
+  
+
+    /* SIMPLE SCROLL FADE */ 
+
+    .fade { 
+
+      opacity: 0; 
+
+      transform: translateY(24px); 
+
+      transition: all 0.8s ease; 
+
+    } 
+
+  
+
+    .fade.visible { 
+
+      opacity: 1; 
+
+      transform: translateY(0); 
+
+    } 
+
+  
+
+    @media (max-width: 768px) { 
+
+      h1 { font-size: 40px; } 
+
+      h2 { font-size: 30px; } 
+
+      section { padding: 90px 0; } 
+
+    } 
+
+  </style> 
+
+</head> 
+
+<body> 
+
+  
+
+  <div class="nav">AdeptFlux · Mentor‑Led Engineering & AI</div> 
+
+  
+
+  <!-- HERO --> 
+
+  <section class="hero"> 
+
+    <div class="container fade"> 
+
+      <h1> 
+
+        A Learning Ecosystem for Engineers 
+
+        Who Want Real‑World Thinking 
+
+      </h1> 
+
+      <p> 
+
+        AdeptFlux helps students and engineers move from theoretical understanding 
+
+        to practical reasoning, AI‑assisted workflows, and future‑ready skills — 
+
+        guided through mentorship, not noise. 
+
+      </p> 
+
+      <a href="#ecosystem" class="btn">Explore the Ecosystem</a> 
+
+    </div> 
+
+  </section> 
+
+  
+
+  <!-- PROBLEM --> 
+
+  <section> 
+
+    <div class="container fade"> 
+
+      <h2>The Missing Layer in Technical Education</h2> 
+
+      <div class="grid"> 
+
+        <div class="card"> 
+
+          <h3>Knowledge Without Clarity</h3> 
+
+          <p>Understanding theory but struggling to explain or apply it.</p> 
+
+        </div> 
+
+        <div class="card"> 
+
+          <h3>Interviews Without Structure</h3> 
+
+          <p>Freezing not due to lack of skill, but lack of thinking frameworks.</p> 
+
+        </div> 
+
+        <div class="card"> 
+
+          <h3>AI Without Direction</h3> 
+
+          <p>Tools exist, but without fundamentals, leverage feels overwhelming.</p> 
+
+        </div> 
+
+      </div> 
+
+    </div> 
+
+  </section> 
+
+  
+
+  <!-- PHILOSOPHY --> 
+
+  <section id="ecosystem"> 
+
+    <div class="container fade"> 
+
+      <h2>The AdeptFlux Approach</h2> 
+
+      <p> 
+
+        AdeptFlux is built on long‑term thinking — where mentorship, context, and 
+
+        deliberate practice replace rushed consumption and surface‑level learning. 
+
+      </p> 
+
+      <div class="grid"> 
+
+        <div class="card"> 
+
+          <h3>Engineering Thinking</h3> 
+
+          <p>Develop intuition, reasoning, and articulation like a senior engineer.</p> 
+
+        </div> 
+
+        <div class="card"> 
+
+          <h3>AI as Leverage</h3> 
+
+          <p>Use AI as a thinking assistant — not a shortcut.</p> 
+
+        </div> 
+
+        <div class="card"> 
+
+          <h3>Skill to Opportunity</h3> 
+
+          <p>Learn how capable engineers build sustainable income pathways.</p> 
+
+        </div> 
+
+      </div> 
+
+    </div> 
+
+  </section> 
+
+  
+
+  <!-- CTA --> 
+
+  <section class="cta"> 
+
+    <div class="container fade"> 
+
+      <h2>Built for the Long Term</h2> 
+
+      <p> 
+
+        AdeptFlux is designed to evolve — from foundational learning to advanced 
+
+        programs and mentorship pathways. 
+
+      </p> 
+
+      <a href="join.html" class="btn">Join the Ecosystem</a> 
+
+    </div> 
+
+  </section> 
+
+  
+
+  <footer> 
+
+    © 2026 AdeptFlux · Independent · Mentor‑Led · Future‑Ready 
+
+  </footer> 
+
+  
+
+  <script> 
+
+    const fades = document.querySelectorAll('.fade'); 
+
+    const observer = new IntersectionObserver(entries => { 
+
+      entries.forEach(entry => { 
+
+        if (entry.isIntersecting) entry.target.classList.add('visible'); 
+
+      }); 
+
+    }, { threshold: 0.15 }); 
+
+  
+
+    fades.forEach(el => observer.observe(el)); 
+
+  </script> 
+
+  
+
+</body> 
+
+</html> 
 
 
 
