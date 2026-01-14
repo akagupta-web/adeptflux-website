@@ -247,77 +247,144 @@ No Emergent. No subscriptions. No framework lock-in.
         .path-analog .btn-path { color: var(--accent-copper); border-color: var(--accent-copper); }
         .path-digital .btn-path { color: var(--accent-cyan); border-color: var(--accent-cyan); }
 
-        /* --- 7. FOUNDER SECTION --- */
-        .founder-container { max-width: 800px; margin: 0 auto; }
-        .quote-box blockquote {
-            font-size: 1.2rem; font-weight: 500; font-style: italic;
-            line-height: 1.4; margin-bottom: 30px; text-align: center;
-        }
-        @media (min-width: 768px) { .quote-box blockquote { font-size: 1.5rem; } }
+        /* --- 7. FOUNDER SECTION (REDESIGNED) --- */
+.section-founder {
+    padding: 100px 20px;
+    background: linear-gradient(to bottom, var(--bg-slate), #0b1120);
+    border-bottom: 1px solid var(--border-color);
+}
 
-        .founder-profile {
-            display: flex; flex-direction: column; align-items: center;
-            justify-content: center; gap: 20px; text-align: center; margin-bottom: 30px;
-        }
-        @media (min-width: 768px) { 
-            .founder-profile { flex-direction: row; text-align: left; } 
-        }
+.founder-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 850px;
+    margin: 0 auto;
+    /* Subtle shadow to lift it off the page */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+}
 
-        .founder-img {
-            width: 80px; height: 80px; border-radius: 50%;
-            border: 2px solid var(--accent-copper); object-fit: cover;
-        }
+/* Layout: Flex Image + Details */
+.founder-header {
+    display: flex;
+    flex-direction: column; /* Mobile first: Stacked */
+    align-items: center;
+    gap: 30px;
+    text-align: center;
+}
 
-        .bio-content {
-            display: none; background: var(--bg-card); padding: 30px;
-            border-radius: 12px; margin-top: 30px; border: 1px solid var(--border-color);
-            color: var(--text-muted); font-size: 1rem;
-        }
-        
-        .btn-read-more {
-            display: block; margin: 0 auto; background: transparent;
-            color: var(--text-muted); border: 1px solid var(--border-color);
-            padding: 10px 25px; border-radius: 50px; cursor: pointer;
-        }
+@media (min-width: 768px) {
+    .founder-header {
+        flex-direction: row; /* Desktop: Side by side */
+        align-items: flex-start;
+        text-align: left;
+    }
+}
 
-        /* --- 8. FOOTER --- */
-        footer { padding: 60px 20px; text-align: center; background: #0b1120; }
-        input[type="email"] {
-            width: 100%; padding: 14px; background: var(--bg-slate);
-            border: 1px solid var(--border-color); border-radius: 6px;
-            color: white; font-family: var(--font-main); margin-bottom: 10px;
-        }
-        @media (min-width: 480px) { 
-            .input-group { display: flex; gap: 10px; }
-            input[type="email"] { margin-bottom: 0; }
-        }
-        /* --- LINKEDIN BUTTON STYLE --- */
+.founder-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid var(--accent-copper);
+    object-fit: cover;
+    flex-shrink: 0; /* Prevents image from squashing */
+}
+
+.founder-details {
+    flex: 1;
+}
+
+.founder-details h3 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    color: var(--text-main);
+}
+
+.role {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.ex-role {
+    font-size: 0.95rem;
+    color: var(--accent-copper);
+    margin-bottom: 25px; /* Space before buttons */
+    display: block;
+}
+
+/* Action Buttons Row - Groups items nicely */
+.founder-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center; /* Center on mobile */
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .founder-actions {
+        justify-content: flex-start; /* Left on desktop */
+    }
+}
+
+/* LinkedIn Button */
 .linkedin-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-top: 12px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #94A3B8; /* Muted text initially */
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    padding: 6px 14px;
-    border-radius: 50px;
-    background: rgba(255, 255, 255, 0.03);
-}
-
-.linkedin-btn svg {
-    fill: #0A66C2; /* Official LinkedIn Blue */
-    transition: fill 0.3s ease;
-}
-
-.linkedin-btn:hover {
+    font-size: 0.9rem;
+    font-weight: 600;
     color: white;
-    border-color: #0A66C2;
-    background: rgba(10, 102, 194, 0.1); /* Subtle Blue Glow */
-    transform: translateY(-2px);
+    text-decoration: none;
+    background: #0A66C2; /* Official LinkedIn Blue */
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: 0.3s;
+    border: none;
+}
+.linkedin-btn:hover { background: #004182; transform: translateY(-2px); }
+
+/* Read More Button */
+.btn-read-more {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+.btn-read-more:hover { border-color: var(--text-main); color: var(--text-main); }
+
+/* The Expandable Bio */
+.bio-content {
+    display: none; /* Hidden by default */
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1); /* Divider line */
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+.bio-content strong { color: var(--text-main); }
+.bio-content p { margin-bottom: 15px; }
+
+/* Quote Styling */
+.quote-box {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+}
+.quote-box blockquote {
+    font-size: 1.4rem;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--text-main);
+    line-height: 1.5;
 }
     </style>
 </head>
@@ -409,52 +476,111 @@ No Emergent. No subscriptions. No framework lock-in.
         </div>
     </section>
 
-    <section id="about-founder" class="section-padding" style="background: linear-gradient(to bottom, var(--bg-slate), #0b1120);">
-        <div class="founder-container fade-up">
-            <div class="quote-box">
-                <blockquote>
-                    “Most engineers don’t fail because they lack knowledge. 
-                    They struggle because no one taught them how to think like an engineer.”
-                </blockquote>
-            </div>
+    <section id="about-founder" class="section-founder fade-up"> 
 
-            <div class="founder-profile">
-                <img src="akash.jpg" alt="Akash Gupta" class="founder-img">
-                <div class="founder-info">
-    <h3>Akash Gupta</h3>
-    <p>Analog Design Engineer · Micron</p>
-    <span>ex-Texas Instruments</span>
-    
-    <a href="https://www.linkedin.com/in/akash-gupta-58b9a1226/" target="_blank" class="linkedin-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.358 1.248zM6.348 6.169h2.357v1.083h.033c.328-.622 1.13-1.278 2.329-1.278 2.492 0 2.95 1.637 2.95 3.766v4.398h-2.357v-3.896c0-.929-.333-1.564-1.166-1.564-.635 0-1.012.427-1.177.839-.06.148-.075.353-.075.56v4.061H6.348V6.169z"/>
-        </svg>
-        Connect on LinkedIn
-    </a>
-    </div>
+     
 
-            <button id="readMoreBtn" class="btn-read-more" onclick="toggleBio()">Read My Journey ↓</button>
+    <div class="quote-box"> 
 
-            <div id="fullBio" class="bio-content">
-                <p>I’m <strong>Akash</strong>, an Analog Design Engineer currently working at Micron, with prior experience at Texas Instruments.</p>
-                <p>My journey into core electronics wasn’t straightforward. During my B.Tech, I was the <strong>only person in my entire college</strong> who chose to pursue the Analog / VLSI design path seriously.</p>
-                <p>After graduating in 2020, I prepared for GATE and eventually cracked Texas Instruments through an off-campus process — an experience that reshaped how I think about interviews.</p>
-                <p style="border-left: 3px solid var(--accent-copper); padding-left: 15px; color: var(--text-main);">
-                    Most capable engineers don’t struggle because they lack intelligence — they struggle because they lack structured thinking, context, and mentorship.
-                </p>
-                <p>That realization led to <strong>AdeptFlux</strong>. My goal is to help learners bridge the gap between academics and industry, theory and intuition, learning and confidence.</p>
-                
-                <p><strong>Through AdeptFlux, I want to:</strong></p>
-                <ul style="list-style: disc; margin-left: 20px; margin-bottom: 20px;">
-                    <li>Encourage meaningful knowledge sharing within the electronics community.</li>
-                    <li>Help learners develop clear engineering thinking and articulation.</li>
-                    <li>Create guidance that feels <em>engineer-to-engineer</em>, not top-down.</li>
-                </ul>
+        <blockquote> 
 
-                <p>I believe strong engineers are built by <strong>how they think</strong>, not how much they memorize.</p>
-            </div>
-        </div>
-    </section>
+            “Most engineers don’t fail because they lack knowledge.  
+
+            They struggle because no one taught them how to think like an engineer.” 
+
+        </blockquote> 
+
+    </div> 
+
+  
+
+    <div class="founder-card"> 
+
+        <div class="founder-header"> 
+
+            <img src="akash.jpg" alt="Akash Gupta" class="founder-avatar"> 
+
+             
+
+            <div class="founder-details"> 
+
+                <h3>Akash Gupta</h3> 
+
+                <div class="role">Analog Design Engineer · Micron</div> 
+
+                <div class="ex-role">ex-Texas Instruments</div> 
+
+                 
+
+                <div class="founder-actions"> 
+
+                    <a href="https://www.linkedin.com/in/akash-gupta-58b9a1226/" target="_blank" class="linkedin-btn"> 
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"> 
+
+                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.358 1.248zM6.348 6.169h2.357v1.083h.033c.328-.622 1.13-1.278 2.329-1.278 2.492 0 2.95 1.637 2.95 3.766v4.398h-2.357v-3.896c0-.929-.333-1.564-1.166-1.564-.635 0-1.012.427-1.177.839-.06.148-.075.353-.075.56v4.061H6.348V6.169z"/> 
+
+                        </svg> 
+
+                        LinkedIn 
+
+                    </a> 
+
+  
+
+                    <button id="readMoreBtn" class="btn-read-more" onclick="toggleBio()">Read My Journey ↓</button> 
+
+                </div> 
+
+            </div> 
+
+        </div> 
+
+  
+
+        <div id="fullBio" class="bio-content"> 
+
+            <p>I’m <strong>Akash</strong>, an Analog Design Engineer currently working at Micron, with prior experience at Texas Instruments.</p> 
+
+            <p>My journey into core electronics wasn’t straightforward. During my B.Tech, I was the <strong>only person in my entire college</strong> who chose to pursue the Analog / VLSI design path seriously.</p> 
+
+            <p>After graduating in 2020, I prepared for GATE and eventually cracked Texas Instruments through an off-campus process — an experience that reshaped how I think about interviews.</p> 
+
+             
+
+            <p style="border-left: 3px solid var(--accent-copper); padding-left: 15px; color: var(--text-main); margin: 20px 0;"> 
+
+                <em>Most capable engineers don’t struggle because they lack intelligence — they struggle because they lack structured thinking, context, and mentorship.</em> 
+
+            </p> 
+
+  
+
+            <p>That realization led to <strong>AdeptFlux</strong>. My goal is to help learners bridge the gap between academics and industry, theory and intuition, learning and confidence.</p> 
+
+                 
+
+                <p><strong>Through AdeptFlux, I want to:</strong></p> 
+
+                <ul style="list-style: disc; margin-left: 20px; margin-bottom: 20px;"> 
+
+                    <li>Encourage meaningful knowledge sharing within the electronics community.</li> 
+
+                    <li>Help learners develop clear engineering thinking and articulation.</li> 
+
+                    <li>Create guidance that feels <em>engineer-to-engineer</em>, not top-down.</li> 
+
+                </ul> 
+
+  
+
+                <p>I believe strong engineers are built by <strong>how they think</strong>, not how much they memorize.</p> 
+
+        </div> 
+
+    </div> 
+
+</section> 
 
     <footer id="contact">
         <div style="max-width: 500px; margin: 0 auto;" class="fade-up">
