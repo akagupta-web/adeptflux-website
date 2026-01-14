@@ -11,7 +11,7 @@ No Emergent. No subscriptions. No framework lock-in.
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AdeptFlux - Mentorship for Analog Design and AI Engineering Skills. Bridge the gap between theory and real-world mastery.">
+    <meta name="description" content="AdeptFlux - Mentorship for Analog Design and AI Engineering Skills.">
     <title>AdeptFlux | Engineering Intuition & Digital Leverage</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,16 +26,15 @@ No Emergent. No subscriptions. No framework lock-in.
             --bg-card: #1E293B;
             --text-main: #F8FAFC;
             --text-muted: #94A3B8;
-            --accent-copper: #F59E0B; /* Analog/Circuit */
-            --accent-cyan: #06B6D4;  /* Digital/AI */
+            --accent-copper: #F59E0B; 
+            --accent-cyan: #06B6D4; 
             --border-color: #334155;
             
-            /* Typography - Standard Clean Font */
-            --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+            /* Typography */
+            --font-main: 'Inter', sans-serif;
 
             /* Spacing */
             --container-width: 1100px;
-            --section-padding: 80px 20px;
         }
 
         /* --- 2. GLOBAL STYLES --- */
@@ -53,24 +52,19 @@ No Emergent. No subscriptions. No framework lock-in.
         ul { list-style: none; }
         button { font-family: var(--font-main); }
 
-        /* Typography Utilities */
+        /* Utilities */
         h1, h2, h3 { line-height: 1.2; font-weight: 700; }
         .text-copper { color: var(--accent-copper); }
         .text-cyan { color: var(--accent-cyan); }
-        .text-highlight { color: #fff; font-weight: 600; }
-
-        /* --- 3. ANIMATION UTILITIES --- */
+        
         .fade-up {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-        /* --- 4. NAVIGATION --- */
+        /* --- 3. NAVIGATION (MOBILE OPTIMIZED) --- */
         nav {
             position: fixed;
             top: 0; left: 0; width: 100%;
@@ -88,21 +82,19 @@ No Emergent. No subscriptions. No framework lock-in.
             align-items: center;
             padding: 0 20px;
         }
-        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px; }
+        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px; z-index: 1002; }
         .logo span { color: var(--accent-cyan); }
         
-        .nav-links { display: none; gap: 30px; }
-        @media (min-width: 768px) { .nav-links { display: flex; align-items: center; } }
-
-        /* Standard Text Links in Nav */
-        .nav-item {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            font-weight: 500;
+        /* Desktop Nav Links */
+        .nav-links { display: none; gap: 30px; align-items: center; }
+        @media (min-width: 768px) { 
+            .nav-links { display: flex; } 
+            .hamburger { display: none; }
         }
+
+        .nav-item { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; }
         .nav-item:hover { color: var(--text-main); }
 
-        /* The Boxed Button Style */
         .btn-nav {
             background: transparent;
             border: 1px solid var(--text-muted);
@@ -110,18 +102,55 @@ No Emergent. No subscriptions. No framework lock-in.
             border-radius: 6px;
             font-size: 0.9rem;
             color: var(--text-main);
-            margin-left: 10px; /* Space it out slightly */
+            margin-left: 10px;
         }
         .btn-nav:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
 
-        /* --- 5. HERO SECTION --- */
+        /* --- HAMBURGER MENU (MOBILE) --- */
+        .hamburger {
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-main);
+            z-index: 1002;
+            display: block; /* Visible on mobile */
+        }
+        
+        /* Mobile Menu Dropdown */
+        .mobile-menu {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background: var(--bg-slate);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            transform: translateY(-100%); /* Hidden top */
+            transition: transform 0.4s ease-in-out;
+            z-index: 1001;
+        }
+        .mobile-menu.open { transform: translateY(0); }
+        
+        .mobile-link { font-size: 1.5rem; font-weight: 600; color: var(--text-main); }
+        .mobile-btn {
+            padding: 15px 30px;
+            border: 1px solid var(--accent-copper);
+            color: var(--accent-copper);
+            border-radius: 8px;
+            font-size: 1.2rem;
+        }
+
+        /* --- 4. HERO SECTION --- */
         .hero {
-            padding: 160px 20px 100px;
+            /* Mobile Padding (Less top padding so text is visible) */
+            padding: 120px 20px 80px; 
             max-width: var(--container-width);
             margin: 0 auto;
             text-align: center;
             background-image: radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.08) 0%, transparent 60%);
         }
+        /* Desktop Padding */
+        @media (min-width: 768px) { .hero { padding: 180px 20px 100px; } }
         
         .hero-badge {
             display: inline-block;
@@ -132,11 +161,10 @@ No Emergent. No subscriptions. No framework lock-in.
             font-size: 0.85rem;
             margin-bottom: 24px;
             border: 1px solid var(--border-color);
-            letter-spacing: 0.5px;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem; /* Smaller for mobile */
             margin-bottom: 24px;
             letter-spacing: -0.02em;
         }
@@ -144,10 +172,11 @@ No Emergent. No subscriptions. No framework lock-in.
 
         .hero p {
             color: var(--text-muted);
-            font-size: 1.125rem;
+            font-size: 1rem;
             max-width: 640px;
             margin: 0 auto 40px;
         }
+        @media (min-width: 768px) { .hero p { font-size: 1.125rem; } }
 
         .cta-group {
             display: flex;
@@ -167,8 +196,6 @@ No Emergent. No subscriptions. No framework lock-in.
             cursor: pointer;
             font-size: 1rem;
         }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
-
         .btn-secondary {
             background: transparent;
             color: var(--text-main);
@@ -178,192 +205,93 @@ No Emergent. No subscriptions. No framework lock-in.
             font-weight: 600;
             font-size: 1rem;
         }
-        .btn-secondary:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
 
-        /* --- 6. PROBLEM AWARENESS --- */
-        .section-problem {
-            padding: var(--section-padding);
-            background: #0b1120;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
+        /* --- 5. GRID SECTIONS --- */
+        .section-padding { padding: 80px 20px; }
+        .section-bg { background: #0b1120; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        
         .grid-3 {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-            max-width: var(--container-width);
-            margin: 0 auto;
+            display: grid; grid-template-columns: 1fr; gap: 30px;
+            max-width: var(--container-width); margin: 0 auto;
         }
         @media (min-width: 768px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
 
         .card {
-            background: var(--bg-card);
-            padding: 32px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
+            background: var(--bg-card); padding: 32px;
+            border-radius: 12px; border: 1px solid var(--border-color);
             transition: 0.3s;
         }
-        .card:hover { border-color: var(--accent-cyan); transform: translateY(-5px); }
-        .card h3 { margin: 15px 0 10px; font-size: 1.25rem; }
-        .card p { color: var(--text-muted); font-size: 0.95rem; }
         .icon-box { font-size: 1.8rem; margin-bottom: 12px; }
 
-        /* --- 7. PATHWAYS SECTION --- */
-        .section-pathways {
-            padding: var(--section-padding);
-            max-width: var(--container-width);
-            margin: 0 auto;
-        }
-        .section-header { text-align: center; margin-bottom: 50px; }
-        .section-header h2 { font-size: 2.5rem; margin-bottom: 10px; }
-
+        /* --- 6. PATHWAYS --- */
         .split-container {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
+            display: flex; flex-direction: column; gap: 30px;
+            max-width: var(--container-width); margin: 0 auto;
         }
         @media (min-width: 768px) { .split-container { flex-direction: row; } }
 
         .path-card {
-            flex: 1;
-            padding: 40px;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
+            flex: 1; padding: 30px;
+            border-radius: 16px; border: 1px solid var(--border-color);
             background: linear-gradient(180deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 1) 100%);
         }
-
         .path-analog { border-top: 4px solid var(--accent-copper); }
-        .path-analog h3 { color: var(--accent-copper); }
-        .path-analog .btn-path { border-color: var(--accent-copper); color: var(--accent-copper); }
-
         .path-digital { border-top: 4px solid var(--accent-cyan); }
-        .path-digital h3 { color: var(--accent-cyan); }
-        .path-digital .btn-path { border-color: var(--accent-cyan); color: var(--accent-cyan); }
-
-        .path-card ul { margin: 24px 0; }
-        .path-card li { margin-bottom: 12px; display: flex; align-items: start; gap: 10px; color: var(--text-muted); font-size: 0.95rem; }
-        .path-card li::before { content: "•"; font-weight: bold; font-size: 1.2rem; line-height: 1rem; }
+        
+        .path-card ul li { margin-bottom: 10px; color: var(--text-muted); font-size: 0.95rem; }
         
         .btn-path {
-            margin-top: 10px;
-            display: inline-block;
-            padding: 12px 24px;
-            border: 1px solid;
-            border-radius: 6px;
-            font-weight: 500;
-            font-size: 0.95rem;
+            margin-top: 15px; display: inline-block; padding: 12px 24px;
+            border: 1px solid; border-radius: 6px; font-weight: 500; font-size: 0.95rem;
         }
+        .path-analog .btn-path { color: var(--accent-copper); border-color: var(--accent-copper); }
+        .path-digital .btn-path { color: var(--accent-cyan); border-color: var(--accent-cyan); }
 
-        /* --- 8. FOUNDER SECTION --- */
-        .section-founder {
-            padding: 100px 20px;
-            background: linear-gradient(to bottom, var(--bg-slate), #0b1120);
-            border-bottom: 1px solid var(--border-color);
-        }
-        .founder-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .quote-box {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+        /* --- 7. FOUNDER SECTION --- */
+        .founder-container { max-width: 800px; margin: 0 auto; }
         .quote-box blockquote {
-            font-size: 1.5rem;
-            font-weight: 500;
-            font-style: italic;
-            color: var(--text-main);
-            line-height: 1.4;
-            margin-bottom: 30px;
+            font-size: 1.2rem; font-weight: 500; font-style: italic;
+            line-height: 1.4; margin-bottom: 30px; text-align: center;
         }
-        
+        @media (min-width: 768px) { .quote-box blockquote { font-size: 1.5rem; } }
+
         .founder-profile {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            text-align: left;
-            margin-bottom: 30px;
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center; gap: 20px; text-align: center; margin-bottom: 30px;
+        }
+        @media (min-width: 768px) { 
+            .founder-profile { flex-direction: row; text-align: left; } 
+        }
+
+        .founder-img {
+            width: 80px; height: 80px; border-radius: 50%;
+            border: 2px solid var(--accent-copper); object-fit: cover;
+        }
+
+        .bio-content {
+            display: none; background: var(--bg-card); padding: 30px;
+            border-radius: 12px; margin-top: 30px; border: 1px solid var(--border-color);
+            color: var(--text-muted); font-size: 1rem;
         }
         
-        /* IMAGE STYLING */
-        .founder-img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 2px solid var(--accent-copper);
-            background-color: var(--bg-card); /* Fallback if image fails */
-        }
-
-        .founder-info h3 { font-size: 1.2rem; color: var(--text-main); margin-bottom: 4px; }
-        .founder-info p { font-size: 0.9rem; color: var(--accent-copper); font-weight: 500; }
-        .founder-info span { display: block; font-size: 0.85rem; color: var(--text-muted); margin-top: 2px; }
-
-        /* Expandable Bio Styles */
-        .bio-content {
-            display: none; /* Hidden by default */
-            background: var(--bg-card);
-            padding: 40px;
-            border-radius: 12px;
-            margin-top: 30px;
-            border: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.8;
-            text-align: left;
-        }
-        .bio-content strong { color: var(--text-main); }
-        .bio-content p { margin-bottom: 20px; }
-
         .btn-read-more {
-            display: block;
-            margin: 0 auto;
-            background: transparent;
-            color: var(--text-muted);
-            border: 1px solid var(--border-color);
-            padding: 10px 25px;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: 0.3s;
+            display: block; margin: 0 auto; background: transparent;
+            color: var(--text-muted); border: 1px solid var(--border-color);
+            padding: 10px 25px; border-radius: 50px; cursor: pointer;
         }
-        .btn-read-more:hover { color: var(--text-main); border-color: var(--text-main); }
 
-
-        /* --- 9. FOOTER --- */
-        footer {
-            padding: 80px 20px;
-            text-align: center;
-            background: #0b1120;
-        }
-        .footer-content { max-width: 500px; margin: 0 auto; }
-        .input-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 30px;
-            flex-direction: column;
-        }
-        @media (min-width: 480px) { .input-group { flex-direction: row; } }
-
+        /* --- 8. FOOTER --- */
+        footer { padding: 60px 20px; text-align: center; background: #0b1120; }
         input[type="email"] {
-            flex: 1;
-            padding: 14px;
-            background: var(--bg-slate);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            color: white;
-            font-family: var(--font-main);
-            font-size: 1rem;
+            width: 100%; padding: 14px; background: var(--bg-slate);
+            border: 1px solid var(--border-color); border-radius: 6px;
+            color: white; font-family: var(--font-main); margin-bottom: 10px;
         }
-        input:focus { outline: none; border-color: var(--accent-cyan); }
+        @media (min-width: 480px) { 
+            .input-group { display: flex; gap: 10px; }
+            input[type="email"] { margin-bottom: 0; }
+        }
 
-        .copyright {
-            margin-top: 60px;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 30px;
-        }
     </style>
 </head>
 <body>
@@ -371,12 +299,22 @@ No Emergent. No subscriptions. No framework lock-in.
     <nav>
         <div class="nav-container">
             <a href="#" class="logo">Adept<span>Flux</span></a>
+            
             <div class="nav-links">
                 <a href="about.html" class="nav-item">About</a>
-                <a href="#contact" class="nav-item">Join</a>
+                <a href="contact.html" class="nav-item">Join</a>
                 <a href="contact.html" class="nav-item">Contact</a>
                 <a href="mentorship.html" class="btn-nav">Apply for Mentorship</a>
             </div>
+
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="about.html" class="mobile-link" onclick="toggleMenu()">About</a>
+            <a href="contact.html" class="mobile-link" onclick="toggleMenu()">Join</a>
+            <a href="contact.html" class="mobile-link" onclick="toggleMenu()">Contact</a>
+            <a href="mentorship.html" class="mobile-btn" onclick="toggleMenu()">Apply for Mentorship</a>
         </div>
     </nav>
 
@@ -391,7 +329,7 @@ No Emergent. No subscriptions. No framework lock-in.
         </div>
     </header>
 
-    <section class="section-problem">
+    <section class="section-padding section-bg">
         <div class="grid-3">
             <div class="card fade-up">
                 <div class="icon-box">🧠</div>
@@ -411,41 +349,41 @@ No Emergent. No subscriptions. No framework lock-in.
         </div>
     </section>
 
-    <section id="pathways" class="section-pathways">
-        <div class="section-header fade-up">
-            <p style="color: var(--accent-cyan); font-weight: 600; font-size: 0.9rem; margin-bottom: 10px;">SELECT YOUR CONFIGURATION</p>
+    <section id="pathways" class="section-padding">
+        <div style="text-align: center; margin-bottom: 50px;" class="fade-up">
+            <p style="color: var(--accent-cyan); font-weight: 600; font-size: 0.9rem;">SELECT YOUR CONFIGURATION</p>
             <h2>Choose Your Pathway</h2>
         </div>
 
         <div class="split-container">
-            <div id="analog" class="path-card path-analog fade-up">
-                <p style="color: var(--accent-copper); font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px;">TRACK A</p>
+            <div class="path-card path-analog fade-up">
+                <p style="color: var(--accent-copper); font-size: 0.85rem; font-weight: 700; letter-spacing: 1px;">TRACK A</p>
                 <h3>The Circuit Architect</h3>
-                <p style="margin-top: 10px; margin-bottom: 20px;">For students and EEs who want to master Analog Design, pass tough interviews, and build deep engineering intuition.</p>
+                <p style="margin: 10px 0 20px;">For students and EEs who want to master Analog Design and pass tough interviews.</p>
                 <ul>
-                    <li>Deep Circuit Intuition (No rote memorization)</li>
-                    <li>Whiteboard Interview Prep</li>
-                    <li>Mock Interviews with Seniors</li>
+                    <li>• Deep Circuit Intuition</li>
+                    <li>• Whiteboard Interview Prep</li>
+                    <li>• Mock Interviews with Seniors</li>
                 </ul>
-                <a href="#" class="btn-path">View Engineering Mentorship →</a>
+                <a href="mentorship.html" class="btn-path">View Engineering Mentorship →</a>
             </div>
 
-            <div id="digital" class="path-card path-digital fade-up" style="transition-delay: 200ms;">
-                <p style="color: var(--accent-cyan); font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px;">TRACK B</p>
+            <div class="path-card path-digital fade-up" style="transition-delay: 200ms;">
+                <p style="color: var(--accent-cyan); font-size: 0.85rem; font-weight: 700; letter-spacing: 1px;">TRACK B</p>
                 <h3>The Digital Builder</h3>
-                <p style="margin-top: 10px; margin-bottom: 20px;">For engineers and creators who want to use AI to code faster, create content, and build digital income streams.</p>
+                <p style="margin: 10px 0 20px;">For engineers who want to use AI to code faster and build digital income streams.</p>
                 <ul>
-                    <li>AI-Augmented Workflows</li>
-                    <li>Digital Asset Creation</li>
-                    <li>Tech-Savvy Solopreneurship</li>
+                    <li>• AI-Augmented Workflows</li>
+                    <li>• Digital Asset Creation</li>
+                    <li>• Tech-Savvy Solopreneurship</li>
                 </ul>
                 <a href="#" class="btn-path">Explore Digital Skills →</a>
             </div>
         </div>
     </section>
 
-    <section id="about-founder" class="section-founder fade-up">
-        <div class="founder-container">
+    <section id="about-founder" class="section-padding" style="background: linear-gradient(to bottom, var(--bg-slate), #0b1120);">
+        <div class="founder-container fade-up">
             <div class="quote-box">
                 <blockquote>
                     “Most engineers don’t fail because they lack knowledge. 
@@ -454,8 +392,7 @@ No Emergent. No subscriptions. No framework lock-in.
             </div>
 
             <div class="founder-profile">
-                <img src="akash.jpg" alt="Akash Gupta" class="founder-img" style="object-fit:cover;">
-                
+                <img src="akash.jpg" alt="Akash Gupta" class="founder-img">
                 <div class="founder-info">
                     <h3>Akash Gupta</h3>
                     <p>Analog Design Engineer · Micron</p>
@@ -467,69 +404,48 @@ No Emergent. No subscriptions. No framework lock-in.
 
             <div id="fullBio" class="bio-content">
                 <p>I’m <strong>Akash</strong>, an Analog Design Engineer currently working at Micron, with prior experience at Texas Instruments.</p>
-
-                <p>My journey into core electronics wasn’t straightforward. During my B.Tech, I was the <strong>only person in my entire college</strong> who chose to pursue the Analog / VLSI design path seriously. At the time, there was little clarity, almost no peer ecosystem, and no structured mentorship around this field.</p>
-
-                <p>After graduating in 2020, I prepared for GATE, explored the depth of core electronics, and spent years building conceptual clarity rather than surface-level preparation. Eventually, I cracked Texas Instruments through an off-campus process — an experience that reshaped how I think about interviews, engineering problem-solving, and what the industry actually values.</p>
-
-                <p>Over the last 3.5+ years, across high-performance semiconductor environments, one pattern has remained consistent:</p>
-                
+                <p>My journey into core electronics wasn’t straightforward. During my B.Tech, I was the <strong>only person in my entire college</strong> who chose to pursue the Analog / VLSI design path seriously.</p>
+                <p>After graduating in 2020, I prepared for GATE and eventually cracked Texas Instruments through an off-campus process — an experience that reshaped how I think about interviews.</p>
                 <p style="border-left: 3px solid var(--accent-copper); padding-left: 15px; color: var(--text-main);">
                     Most capable engineers don’t struggle because they lack intelligence — they struggle because they lack structured thinking, context, and mentorship.
                 </p>
-
-                <p>That realization led to <strong>AdeptFlux</strong>. AdeptFlux is not a course platform. It’s a <strong>mentor-led ecosystem</strong>.</p>
-
-                <p>My goal is to bring together students, analog engineers, and technically curious learners — and help them bridge the gap between academics and industry, theory and intuition, learning and confidence.</p>
-                
-                <p><strong>Through AdeptFlux, I want to:</strong></p>
-                <ul style="list-style: disc; margin-left: 20px; margin-bottom: 20px;">
-                    <li>Encourage meaningful knowledge sharing within the electronics community.</li>
-                    <li>Help learners develop clear engineering thinking and articulation.</li>
-                    <li>Create guidance that feels <em>engineer-to-engineer</em>, not top-down.</li>
-                </ul>
-
-                <p>I believe strong engineers are built by <strong>how they think</strong>, not how much they memorize.</p>
+                <p>That realization led to <strong>AdeptFlux</strong>. My goal is to help learners bridge the gap between academics and industry.</p>
             </div>
         </div>
     </section>
 
     <footer id="contact">
-        <div class="footer-content fade-up">
+        <div style="max-width: 500px; margin: 0 auto;" class="fade-up">
             <h2>Join the Inner Circle</h2>
-            <p style="color: var(--text-muted); margin-top: 10px;">Get weekly breakdowns on circuit intuition, interview questions, and future-proof digital skills.</p>
-            
-            <form class="input-group" onsubmit="event.preventDefault(); alert('Lead captured! Connect this to your email service.');">
+            <p style="color: var(--text-muted); margin-top: 10px;">Get weekly breakdowns on circuit intuition and interview prep.</p>
+            <form class="input-group" style="margin-top: 30px;" onsubmit="event.preventDefault(); alert('Lead captured!');">
                 <input type="email" placeholder="Enter your email address..." required>
-                <button type="submit" class="btn-primary">Get Access</button>
+                <button type="submit" class="btn-primary" style="width: 100%;">Get Access</button>
             </form>
         </div>
-
-        <div class="copyright">
+        <div style="margin-top: 60px; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px;">
             &copy; 2026 AdeptFlux. Built for Engineers.
         </div>
     </footer>
 
     <script>
-        // 1. Scroll Animations
-        const observerOptions = { threshold: 0.1 };
+        // 1. Mobile Menu Toggle
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('open');
+        }
+
+        // 2. Scroll Animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-        document.querySelectorAll('.fade-up').forEach(el => {
-            observer.observe(el);
-        });
-
-        // 2. Founder Bio Toggle
+        // 3. Founder Bio Toggle
         function toggleBio() {
             var bio = document.getElementById("fullBio");
             var btn = document.getElementById("readMoreBtn");
-            
             if (bio.style.display === "block") {
                 bio.style.display = "none";
                 btn.innerHTML = "Read My Journey ↓";
