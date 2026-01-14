@@ -291,7 +291,34 @@ No Emergent. No subscriptions. No framework lock-in.
             .input-group { display: flex; gap: 10px; }
             input[type="email"] { margin-bottom: 0; }
         }
+        /* --- LINKEDIN BUTTON STYLE --- */
+.linkedin-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #94A3B8; /* Muted text initially */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    padding: 6px 14px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.03);
+}
 
+.linkedin-btn svg {
+    fill: #0A66C2; /* Official LinkedIn Blue */
+    transition: fill 0.3s ease;
+}
+
+.linkedin-btn:hover {
+    color: white;
+    border-color: #0A66C2;
+    background: rgba(10, 102, 194, 0.1); /* Subtle Blue Glow */
+    transform: translateY(-2px);
+}
     </style>
 </head>
 <body>
@@ -394,11 +421,17 @@ No Emergent. No subscriptions. No framework lock-in.
             <div class="founder-profile">
                 <img src="akash.jpg" alt="Akash Gupta" class="founder-img">
                 <div class="founder-info">
-                    <h3>Akash Gupta</h3>
-                    <p>Analog IC Designer | Micron</p>
-                    <span>Ex - Texas Instruments</span>
-                </div>
-            </div>
+    <h3>Akash Gupta</h3>
+    <p>Analog Design Engineer · Micron</p>
+    <span>ex-Texas Instruments</span>
+    
+    <a href="https://www.linkedin.com/in/akash-gupta-58b9a1226/" target="_blank" class="linkedin-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.358 1.248zM6.348 6.169h2.357v1.083h.033c.328-.622 1.13-1.278 2.329-1.278 2.492 0 2.95 1.637 2.95 3.766v4.398h-2.357v-3.896c0-.929-.333-1.564-1.166-1.564-.635 0-1.012.427-1.177.839-.06.148-.075.353-.075.56v4.061H6.348V6.169z"/>
+        </svg>
+        Connect on LinkedIn
+    </a>
+    </div>
 
             <button id="readMoreBtn" class="btn-read-more" onclick="toggleBio()">Read My Journey ↓</button>
 
