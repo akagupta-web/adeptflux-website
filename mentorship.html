@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AdeptFlux Mentorship - 1:1 and Group coaching for Analog Design interviews and Engineering Intuition.">
+    <title>Apply for Mentorship | AdeptFlux</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- SHARED DESIGN SYSTEM --- */
+        :root {
+            /* Palette */
+            --bg-slate: #0F172A;
+            --bg-card: #1E293B;
+            --bg-darker: #0b1120;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --accent-copper: #F59E0B; 
+            --accent-cyan: #06B6D4; 
+            --accent-red: #EF4444;
+            --border-color: #334155;
+            
+            /* Typography */
+            --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+
+            /* Spacing */
+            --container-width: 900px;
+            --section-padding: 80px 20px;
+        }
+
+        /* --- GLOBAL RESETS --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: var(--bg-slate);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; margin-bottom: 15px; }
+        p { margin-bottom: 20px; color: var(--text-muted); }
+        
+        /* --- UTILITIES --- */
+        .text-copper { color: var(--accent-copper); }
+        .text-cyan { color: var(--accent-cyan); }
+        .text-white { color: white; }
+        
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px; }
+        .logo span { color: var(--accent-cyan); }
+        .nav-links { display: none; gap: 30px; }
+        @media (min-width: 768px) { .nav-links { display: flex; align-items: center; } }
+        .nav-item { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; }
+        .nav-item:hover { color: var(--text-main); }
+        
+        .btn-nav-active {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid var(--accent-copper);
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--accent-copper);
+            margin-left: 10px;
+        }
+
+        /* --- HEADER --- */
+        .page-header {
+            padding: 160px 20px 80px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .page-header h1 { font-size: 2.5rem; }
+        @media (min-width: 768px) { .page-header h1 { font-size: 3.5rem; } }
+
+        /* --- SECTIONS --- */
+        .section-std {
+            padding: 60px 20px;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+        }
+        .section-std:last-child { border-bottom: none; }
+
+        /* Structure Cards (Circuit, Design, Interview) */
+        .structure-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        @media (min-width: 768px) { .structure-grid { grid-template-columns: repeat(3, 1fr); } }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .feature-card h4 { font-size: 1.1rem; color: var(--text-main); }
+        .icon-circle {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(255,255,255,0.05);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* "What this is NOT" - The Red Section */
+        .not-box {
+            background: rgba(239, 68, 68, 0.05); /* Red tint */
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+        .not-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fca5a5; /* Light red text */
+        }
+        .not-list li::before {
+            content: "✕";
+            font-weight: bold;
+        }
+
+        /* Engagement Model */
+        .engagement-box {
+            background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-slate) 100%);
+            border: 1px solid var(--accent-copper);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        /* --- FORM SECTION --- */
+        .apply-section {
+            background: var(--bg-darker);
+            padding: 80px 20px;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-label { display: block; margin-bottom: 8px; color: var(--text-main); font-weight: 500; font-size: 0.9rem; }
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 12px;
+            background: var(--bg-slate);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: white;
+            font-family: var(--font-main);
+            font-size: 1rem;
+        }
+        .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--accent-copper); }
+        .form-textarea { height: 120px; resize: vertical; }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--accent-copper);
+            color: #000;
+            padding: 16px;
+            font-weight: 700;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+        .btn-submit:hover { opacity: 0.9; transform: translateY(-2px); }
+
+        /* FOOTER */
+        footer {
+            padding: 60px 20px;
+            text-align: center;
+            background: var(--bg-slate);
+            border-top: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Adept<span>Flux</span></a>
+            <div class="nav-links">
+                <a href="about.html" class="nav-item">About</a>
+                <a href="about.html" class="nav-item">Philosophy</a>
+                <a href="#contact" class="nav-item">Contact</a>
+                <a href="mentorship.html" class="btn-nav-active">Apply for Mentorship</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header fade-up">
+        <h1>Master the Art of <br><span class="text-copper">Analog Thinking</span></h1>
+        <p style="font-size: 1.15rem; max-width: 600px; margin: 0 auto; margin-top: 20px;">
+            Stop memorizing derivations. Start designing with intuition. A structured mentorship program for those serious about this craft.
+        </p>
+    </header>
+
+    <section class="section-std fade-up">
+        <h2>What Mentorship Means Here</h2>
+        <p>
+            Mentorship at AdeptFlux isn't about me reading a textbook to you. It is a <strong>transfer of experience</strong>. 
+        </p>
+        <p>
+            It is about taking the chaotic mix of theories you learned in university and organizing them into a structured "Engineering Mindset" that you can use to solve problems you've never seen before. It is the bridge between <em>"I think the answer is 5V"</em> and <em>"Based on the input swing and headroom, I designed the stage for 5V."</em>
+        </p>
+    </section>
+
+    <section class="section-std fade-up">
+        <h2>How Sessions Are Structured</h2>
+        <p>We strip away the fluff. Every session is designed to simulate a real-world design review or a high-stakes interview environment.</p>
+        
+        <div class="structure-grid">
+            <div class="feature-card">
+                <div class="icon-circle text-copper">⚡</div>
+                <h4>Circuit Dissection</h4>
+                <p style="font-size: 0.9rem;">We take standard topologies (Mirrors, Diff Pairs, LDOs) and break them down. Not mathematically, but intuitively. What happens if this resistor changes? Why is that transistor there?</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-circle text-cyan">🧠</div>
+                <h4>Design Reasoning</h4>
+                <p style="font-size: 0.9rem;">The "Why." In interviews, the answer matters less than the approach. We train your brain to articulate your thought process clearly, logically, and confidently.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-circle text-white">🎯</div>
+                <h4>Interview Simulation</h4>
+                <p style="font-size: 0.9rem;">Whiteboard-style problem solving. I will ask you the questions Tier-1 companies ask, and we will debug your answers together until they are bulletproof.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-std fade-up">
+        <h2>What You Will Gain</h2>
+        <ul style="margin-top: 20px;">
+            <li style="margin-bottom: 15px; display: flex; gap: 15px;">
+                <span class="text-copper">✓</span>
+                <div>
+                    <strong>Unshakeable Confidence:</strong><br>
+                    <span style="font-size: 0.9rem; color: var(--text-muted);">Walk into interviews knowing you can handle curveball questions.</span>
+                </div>
+            </li>
+            <li style="margin-bottom: 15px; display: flex; gap: 15px;">
+                <span class="text-copper">✓</span>
+                <div>
+                    <strong>Design Intuition:</strong><br>
+                    <span style="font-size: 0.9rem; color: var(--text-muted);">Look at a schematic and "see" the signal flow before writing a single equation.</span>
+                </div>
+            </li>
+            <li style="margin-bottom: 15px; display: flex; gap: 15px;">
+                <span class="text-copper">✓</span>
+                <div>
+                    <strong>Structured Thinking:</strong><br>
+                    <span style="font-size: 0.9rem; color: var(--text-muted);">Learn the frameworks senior engineers use to debug complex systems.</span>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <section class="section-std fade-up">
+        <h2>What This Is <span style="color: var(--accent-red);">NOT</span></h2>
+        <p>To respect your time and mine, please read this carefully.</p>
+        
+        <div class="not-box">
+            <ul class="not-list">
+                <li>This is <strong>NOT a "Cracking the Interview" cheat sheet.</strong> We build skills, not memorize answers.</li>
+                <li>This is <strong>NOT a guarantee of a job offer.</strong> I provide the tools; you provide the execution.</li>
+                <li>This is <strong>NOT a passive video course.</strong> If you aren't willing to do the homework and think hard, this isn't for you.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section-std fade-up">
+        <div class="engagement-box">
+            <h3 class="text-copper">The Engagement Model</h3>
+            <p>
+                Mentorship is conducted via <strong>Live Video Sessions</strong> (1:1 or Small Cohort).<br>
+                Includes access to a private community for doubts and offline discussion.
+            </p>
+            <p style="font-size: 0.9rem; margin-top: 20px;">
+                <em>Current Status: Accepting applications for the next batch.</em>
+            </p>
+        </div>
+    </section>
+
+    <section id="apply-form" class="apply-section fade-up">
+        <div class="form-container">
+            <h2 style="text-align: center; margin-bottom: 10px;">Apply for Mentorship</h2>
+            <p style="text-align: center; font-size: 0.9rem; margin-bottom: 30px;">Tell me about your current level so I can understand if I can help you.</p>
+
+            <form onsubmit="event.preventDefault(); alert('Application Submitted! I will review and email you shortly.');">
+                
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" placeholder="e.g. Rahul Sharma" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" placeholder="e.g. rahul@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Current Status</label>
+                    <select class="form-input" style="cursor: pointer;">
+                        <option>Student (3rd/4th Year)</option>
+                        <option>Recent Graduate</option>
+                        <option>Working Professional (0-2 Years)</option>
+                        <option>Working Professional (3+ Years)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">What is your biggest struggle right now?</label>
+                    <textarea class="form-textarea" placeholder="e.g. I freeze during interviews, I don't understand OpAmps intuitively..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Submit Application →</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 AdeptFlux. Built for Engineers.</p>
+    </footer>
+
+    <script>
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
