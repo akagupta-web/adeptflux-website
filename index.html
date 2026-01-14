@@ -94,6 +94,15 @@ No Emergent. No subscriptions. No framework lock-in.
         .nav-links { display: none; gap: 30px; }
         @media (min-width: 768px) { .nav-links { display: flex; align-items: center; } }
 
+        /* Standard Text Links in Nav */
+        .nav-item {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .nav-item:hover { color: var(--text-main); }
+
+        /* The Boxed Button Style */
         .btn-nav {
             background: transparent;
             border: 1px solid var(--text-muted);
@@ -101,6 +110,7 @@ No Emergent. No subscriptions. No framework lock-in.
             border-radius: 6px;
             font-size: 0.9rem;
             color: var(--text-main);
+            margin-left: 10px; /* Space it out slightly */
         }
         .btn-nav:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
 
@@ -244,7 +254,7 @@ No Emergent. No subscriptions. No framework lock-in.
             font-size: 0.95rem;
         }
 
-        /* --- 8. FOUNDER SECTION (NEW) --- */
+        /* --- 8. FOUNDER SECTION --- */
         .section-founder {
             padding: 100px 20px;
             background: linear-gradient(to bottom, var(--bg-slate), #0b1120);
@@ -277,15 +287,13 @@ No Emergent. No subscriptions. No framework lock-in.
             margin-bottom: 30px;
         }
         
-        /* PLACEHOLDER FOR IMAGE */
+        /* IMAGE STYLING */
         .founder-img {
             width: 80px;
             height: 80px;
-            background-color: var(--border-color); /* Replace with your image */
             border-radius: 50%;
-            background-image: url('https://via.placeholder.com/150'); /* Delete this line when you have a real image */
-            background-size: cover;
             border: 2px solid var(--accent-copper);
+            background-color: var(--bg-card); /* Fallback if image fails */
         }
 
         .founder-info h3 { font-size: 1.2rem; color: var(--text-main); margin-bottom: 4px; }
@@ -364,9 +372,9 @@ No Emergent. No subscriptions. No framework lock-in.
         <div class="nav-container">
             <a href="#" class="logo">Adept<span>Flux</span></a>
             <div class="nav-links">
-                <a href="#analog">Engineering</a>
-                <a href="#digital">AI Systems</a>
-                <a href="#about-founder">About Founder</a>
+                <a href="#about-founder" class="nav-item">About</a>
+                <a href="#contact" class="nav-item">Join</a>
+                <a href="#contact" class="nav-item">Contact</a>
                 <a href="#contact" class="btn-nav">Apply for Mentorship</a>
             </div>
         </div>
@@ -446,7 +454,7 @@ No Emergent. No subscriptions. No framework lock-in.
             </div>
 
             <div class="founder-profile">
-            <img src="akash.jpg" alt="Akash Gupta" class="founder-img" style="object-fit:cover;">
+                <img src="akash.jpg" alt="Akash Gupta" class="founder-img" style="object-fit:cover;">
                 
                 <div class="founder-info">
                     <h3>Akash Gupta</h3>
