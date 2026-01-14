@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact AdeptFlux - General Inquiries and Collaborations.">
+    <title>Contact | AdeptFlux</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- SHARED DESIGN SYSTEM --- */
+        :root {
+            /* Palette */
+            --bg-slate: #0F172A;
+            --bg-card: #1E293B;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --accent-copper: #F59E0B; 
+            --accent-cyan: #06B6D4; 
+            --border-color: #334155;
+            
+            /* Typography */
+            --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+
+            /* Spacing */
+            --container-width: 700px; /* Narrower for contact focus */
+        }
+
+        /* --- GLOBAL RESETS --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: var(--bg-slate);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px; }
+        .logo span { color: var(--accent-cyan); }
+        .nav-links { display: none; gap: 30px; }
+        @media (min-width: 768px) { .nav-links { display: flex; align-items: center; } }
+        
+        .nav-item { font-size: 0.95rem; color: var(--text-muted); font-weight: 500; }
+        .nav-item:hover { color: var(--text-main); }
+        .btn-nav {
+            background: transparent;
+            border: 1px solid var(--text-muted);
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            margin-left: 10px;
+        }
+        .btn-nav:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
+
+        /* --- CONTACT CONTENT --- */
+        .contact-wrapper {
+            flex: 1; /* Pushes footer down */
+            padding: 160px 20px 80px; /* Top padding clears the fixed nav */
+            max-width: var(--container-width);
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .header-group { text-align: center; margin-bottom: 40px; }
+        .header-group h1 { font-size: 2.5rem; margin-bottom: 15px; font-weight: 700; }
+        .header-group p { color: var(--text-muted); font-size: 1.1rem; }
+
+        /* REDIRECT BOX (The Filter) */
+        .redirect-box {
+            background: rgba(245, 158, 11, 0.08);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+        .redirect-link {
+            color: var(--accent-copper);
+            font-weight: 600;
+            border-bottom: 1px solid var(--accent-copper);
+        }
+        .redirect-link:hover { color: white; border-color: white; }
+
+        /* FORM STYLES */
+        .form-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .form-group { margin-bottom: 24px; }
+        .form-label { display: block; margin-bottom: 8px; color: var(--text-main); font-weight: 500; font-size: 0.9rem; }
+        
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 14px;
+            background: var(--bg-slate);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: white;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--accent-cyan); }
+        .form-textarea { height: 150px; resize: vertical; }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--text-main);
+            color: var(--bg-slate);
+            padding: 16px;
+            font-weight: 600;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+
+        /* FOOTER */
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        
+        /* ANIMATION UTILS */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Adept<span>Flux</span></a>
+            <div class="nav-links">
+                <a href="about.html" class="nav-item">About</a>
+                <a href="contact.html" class="nav-item" style="color: var(--text-main);">Contact</a> <a href="mentorship.html" class="btn-nav">Apply for Mentorship</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="contact-wrapper fade-up">
+        
+        <div class="header-group">
+            <h1>Get in Touch</h1>
+            <p>For collaborations, speaking inquiries, or general questions.</p>
+        </div>
+
+        <div class="redirect-box">
+            <span style="display: block; margin-bottom: 5px;">⚠️ <strong>Looking for Mentorship?</strong></span>
+            Please use the <a href="mentorship.html" class="redirect-link">Mentorship Application Page</a> instead.<br>
+            <span style="font-size: 0.85rem; opacity: 0.8;">(This helps me respond to your application faster.)</span>
+        </div>
+
+        <div class="form-card">
+            <form onsubmit="event.preventDefault(); alert('Message sent! I will get back to you soon.');">
+                
+                <div class="form-group">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-input" placeholder="Your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" placeholder="email@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-textarea" placeholder="How can I help you?" required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 AdeptFlux. Built for Engineers.</p>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
