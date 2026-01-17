@@ -468,6 +468,110 @@ Deployed via GitHub + Vercel
         white-space: nowrap;
     }
 }
+        /* --- COMMUNITY SECTION (THE SIGNAL HUB) --- */
+.section-community {
+    padding: 80px 20px;
+    background: var(--bg-slate);
+    position: relative;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.community-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: radial-gradient(circle at top right, rgba(34, 158, 217, 0.1), transparent 40%), 
+                var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 50px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative "Circuit" Lines */
+.community-container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 4px; height: 100%;
+    background: var(--accent-copper);
+    opacity: 0.6;
+}
+
+.comm-tag {
+    display: inline-block;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.85rem;
+    color: #229ED9; /* Telegram Blue */
+    background: rgba(34, 158, 217, 0.1);
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(34, 158, 217, 0.2);
+}
+
+.comm-title {
+    font-size: 2rem;
+    color: var(--text-main);
+    margin-bottom: 15px;
+}
+
+.comm-text {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto 35px auto;
+}
+
+/* --- UPDATED TELEGRAM BUTTONS --- */
+.comm-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between buttons */
+    flex-wrap: wrap;
+}
+
+/* Primary Button (Solid) - For Channel */
+.btn-telegram {
+    background: #229ED9;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+    border: 1px solid #229ED9;
+    font-size: 1rem;
+}
+.btn-telegram:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(34, 158, 217, 0.3);
+    background: #1e92cb;
+}
+
+/* Secondary Button (Outline) - For Discussion Group */
+.btn-telegram-outline {
+    background: transparent;
+    color: #229ED9; /* Telegram Blue Text */
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+    border: 1px solid rgba(34, 158, 217, 0.5); /* Thin Blue Border */
+    font-size: 1rem;
+}
+.btn-telegram-outline:hover {
+    transform: translateY(-2px);
+    background: rgba(34, 158, 217, 0.1); /* Subtle Blue Tint on Hover */
+    border-color: #229ED9;
+    color: #fff;
+}
+}
     </style>
 </head>
 <body>
@@ -663,7 +767,33 @@ Deployed via GitHub + Vercel
     </div> 
 
 </section> 
+    <section class="section-community fade-up">
+    <div class="community-container">
+        <div class="comm-tag">/// SIGNAL_NODE_ACTIVE</div>
+        
+        <h2 class="comm-title">Don't Design in Isolation</h2>
+        <p class="comm-text">
+            Join the <strong>AdeptFlux Ecosystem</strong>. 
+            Get official updates on the Channel, or debug circuits with peers in the Discussion Group.
+        </p>
 
+        <div class="comm-actions">
+            <a href="https://t.me/AdeptfuxAnalogDesignCommunity" target="_blank" class="btn-telegram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.592.484-.024.312.525.403.75.456.24.057.97.235 1.15.282.26.069.6.148.918.064.24-.064.53-.28.815-.536.287-.256.76-.714 1.258-1.22.062-.063.14-.071.166-.026.026.045-.018.114-.057.153-.335.336-1.002 1.006-1.127 1.127-.19.183-.396.39-.1.583.425.276.924.596 1.343.872.484.315.867.57 1.144.57.17 0 .338-.178.486-.757.368-1.444.757-3.09 1.01-4.148.064-.265.122-.49.122-.566 0-.106-.065-.16-.16-.16-.176 0-.53.16-.766.257z"/>
+                </svg>
+                Join Channel
+            </a>
+            
+            <a href="https://t.me/AdeptfluxAnalogDiscussion" target="_blank" class="btn-telegram-outline">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1H2zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12z"/>
+                </svg>
+                Join Discussion Group
+            </a>
+        </div>
+    </div>
+</section>
     <footer id="contact">
     <div class="footer-card fade-up">
         <h2 class="footer-heading">Get the "Designers" Perspective</h2>
