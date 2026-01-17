@@ -260,17 +260,30 @@ Deployed via GitHub + Vercel
 
 /* Floating Badge */
 .exp-badge {
-    position: absolute;
-    bottom: 20px;
-    left: -10px;
+    /* --- OLD FLOATING PROPERTIES (DELETE OR COMMENT THESE OUT) --- */
+    /* position: absolute; */
+    /* bottom: 20px; */
+    /* left: -10px; */
+    /* z-index: 3; */
+    /* transform: scale(0.9); */
+
+    /* --- NEW PROPERTIES (ADD THESE) --- */
+    position: relative; /* Sits naturally in the flow */
+    display: inline-flex; /* Only takes up necessary width */
+    margin-top: 25px; /* Adds space between the image and the badge */
+    /* -------------------------------- */
+
+    /* KEEP THESE STYLING PROPERTIES THE SAME */
     background: var(--bg-card);
     border: 1px solid var(--accent-copper);
-    padding: 12px 20px;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-    display: flex;
+    padding: 12px 24px; /* Slightly wider padding looks better here */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); /* Softer shadow */
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+}
+/* ALSO DELETE THIS MEDIA QUERY (It's no longer needed as space isn't an issue) */
+/* @media (max-width: 400px) { .exp-badge { display: none; } } */
     z-index: 3;
     /* Scale down slightly on mobile */
     transform: scale(0.9);
@@ -665,6 +678,61 @@ Deployed via GitHub + Vercel
     color: #fff;
 }
 }
+        /* --- PREMIUM BUTTON STYLES --- */
+.cta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+}
+@media (min-width: 600px) { .cta-group { flex-direction: row; } }
+
+/* 1. Primary Button (Copper Gradient & Glow) */
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-copper), #d97706); /* Copper Gradient */
+    color: #0f172a; /* Dark text for contrast */
+    padding: 14px 32px;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    /* The Glow Effect */
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4); 
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.6);
+    filter: brightness(1.1);
+}
+
+/* 2. Secondary Button (Glassmorphism "Coming Soon") */
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05); /* Very subtle background */
+    color: var(--text-muted);
+    padding: 14px 32px;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Thin glass border */
+    backdrop-filter: blur(5px); /* Blurs background behind it */
+    cursor: default; /* Shows regular arrow (implies not clickable yet) */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+/* Optional: Add a lock icon or visual cue on hover */
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: white;
+}
     </style>
 </head>
 <body>
@@ -703,9 +771,14 @@ Deployed via GitHub + Vercel
            That's why you need a a mentor-led ecosystem/Community to transition from textbook memorization to intuitive design and Analog Leverage.</p> 
             
             <div class="cta-group">
-                <button class="btn-primary" onclick="document.getElementById('pathways').scrollIntoView({behavior: 'smooth'})">Explore the Ecosystem</button>
-                <button class="btn-secondary">Coming Soon</button>
-            </div>
+    <button class="btn-primary" onclick="document.getElementById('pathways').scrollIntoView({behavior: 'smooth'})">
+        Explore the Ecosystem
+    </button>
+    
+    <button class="btn-secondary">
+        Coming Soon
+    </button>
+</div>
         </div>
 
         <div class="hero-image-wrapper">
@@ -714,8 +787,8 @@ Deployed via GitHub + Vercel
             <div class="exp-badge">
                 <div style="background: var(--accent-copper); width: 4px; height: 30px; border-radius: 2px;"></div>
                 <div>
-                    <strong>Ex-Texas Instruments</strong>
-                    <span>Analog Design Engineer</span>
+                    <strong>Texas Instruments Inc. </strong>
+                    <span>Analog IC Designer</span>
                 </div>
             </div>
         </div>
