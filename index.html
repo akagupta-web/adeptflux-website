@@ -221,14 +221,22 @@ Deployed via GitHub + Vercel
 @media (min-width: 600px) { .cta-group { flex-direction: row; } }
 @media (min-width: 900px) { .cta-group { justify-content: flex-start; } }
 
-/* RIGHT COLUMN: IMAGE */
+/* RIGHT COLUMN: IMAGE (UPDATED) */
 .hero-image-wrapper {
-    flex: 1;
+    flex: 1.2; /* Gives the image column a bit more width priority */
     position: relative;
     width: 100%;
-    max-width: 600px;
-    /* Mobile: Add top margin to separate from buttons */
-    margin-top: 20px; 
+    
+    /* --- CHANGE 1: MAKE IMAGE BIGGER --- */
+    max-width: 750px; /* Increased from 600px */
+    
+    /* --- CHANGE 2: CENTER THE BADGE --- */
+    display: flex;          /* Enables Flexbox */
+    flex-direction: column; /* Stacks Image on top, Badge below */
+    align-items: center;    /* Centers everything horizontally */
+    
+    /* Mobile margin */
+    margin-top: 30px; 
 }
 @media (min-width: 900px) { .hero-image-wrapper { margin-top: 0; } }
 
@@ -236,52 +244,45 @@ Deployed via GitHub + Vercel
     width: 100%;
     height: auto;
     border-radius: 16px;
-    /* Mobile: Flat shadow, no tilt */
     box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.1);
     
-    /* Default: No Transform (Flat) */
+    /* Keep the flat mobile look, tilt on Desktop if desired */
     transform: none; 
     transition: transform 0.5s ease;
 }
 
-/* Desktop Only: Add the 3D Tilt */
+/* Optional: Keep the tilt only on large screens */
 @media (min-width: 900px) {
     .hero-img {
         transform: perspective(1000px) rotateY(-5deg);
         border: 4px solid rgba(255, 255, 255, 0.05);
-        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 
-                    0 20px 50px -10px rgba(0, 0, 0, 0.5);
     }
     .hero-image-wrapper:hover .hero-img {
         transform: perspective(1000px) rotateY(0deg);
     }
 }
 
-/* Floating Badge */
+/* THE CENTERED BADGE */
 .exp-badge {
-    /* --- OLD FLOATING PROPERTIES (DELETE OR COMMENT THESE OUT) --- */
-    /* position: absolute; */
-    /* bottom: 20px; */
-    /* left: -10px; */
-    /* z-index: 3; */
-    /* transform: scale(0.9); */
-
-    /* --- NEW PROPERTIES (ADD THESE) --- */
     position: relative; /* Sits naturally in the flow */
-    display: inline-flex; /* Only takes up necessary width */
-    margin-top: 25px; /* Adds space between the image and the badge */
-    /* -------------------------------- */
-
-    /* KEEP THESE STYLING PROPERTIES THE SAME */
+    display: inline-flex;
+    
+    /* Space between image and badge */
+    margin-top: 20px; 
+    
     background: var(--bg-card);
     border: 1px solid var(--accent-copper);
-    padding: 12px 24px; /* Slightly wider padding looks better here */
+    padding: 12px 30px; /* Wider padding looks more like a title */
     border-radius: 12px;
-    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); /* Softer shadow */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
     align-items: center;
     gap: 12px;
 }
+
+.exp-badge strong { display: block; color: var(--text-main); font-size: 1.05rem; }
+.exp-badge span { color: var(--text-muted); font-size: 0.9rem; }
+        
 /* ALSO DELETE THIS MEDIA QUERY (It's no longer needed as space isn't an issue) */
 /* @media (max-width: 400px) { .exp-badge { display: none; } } */
     z-index: 3;
